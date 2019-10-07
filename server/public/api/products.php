@@ -7,9 +7,6 @@ require_once('db_connection.php');
 
 startUp();
 
-$output = file_get_contents('dummy-products-list.json');
-print($output);
-
 if(isset($_GET['id'])){
   $whereClause = "WHERE `id` =" . $_GET['id'];
 } else {
