@@ -10,21 +10,13 @@ class ProductListItem extends React.Component {
     let price = Number.parseFloat(this.props.product.price);
     let priceRounded = price / Math.pow(10, 2);
     return (
-      <div className="container">
-        <div className="square">
-          <div className="content">
-            <div className="table">
-              <div className="table-cell">
-                <span>
-                  <img src={this.props.product.image} className="product-image"></img>
-                </span>
-                <h3>{this.props.product.name}</h3>
-                <span>{'$' + priceRounded}</span>
-                <span>{this.props.product.shortDescription}</span>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className="square col-sm-4">
+        <span>
+          <img src={this.props.product.image} className="product-image"></img>
+        </span>
+        <h2>{this.props.product.name}</h2>
+        <span className="price">{'$' + priceRounded}</span>
+        <span>{this.props.product.shortDescription}</span>
       </div>
     );
   }
