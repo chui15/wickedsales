@@ -1,0 +1,31 @@
+body {
+  font-family: Geneva;
+}
+
+h1 {
+  font-size: 40px;
+  text-align: center;
+}
+
+.square {
+  float: left;
+  position: relative;
+  width: 250px;
+  height: 420px;
+  margin: 6%;
+  overflow: hidden;
+  border: 2px gray solid;
+}
+
+.product-image {
+  height: 150px;
+  width: 210px;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
+.price {
+  color: gray;
+  padding-bottom: 10px;
+  display: block;
+}
