@@ -10,7 +10,13 @@ startUp();
 $output = file_get_contents('dummy-products-list.json');
 print($output);
 
-$query = "SELECT * from `Products`";
+if(isset($_GET['id'])){
+  $whereClause = "WHERE `id` =" . $_GET['id'];
+} else {
+  $whereClause = "";
+}
+
+$query = "SELECT * from `Products`" . $whereClause;
 
 $result = mysqli_query($conn, $query);
 
