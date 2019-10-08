@@ -37,7 +37,7 @@ while($row = mysqli_fetch_assoc($result)){
   $output[] = $row;
 }
 
-$jsonData = json_encode($output);
+$jsonData = json_encode($output); 
 print($jsonData);
 
 ?>
