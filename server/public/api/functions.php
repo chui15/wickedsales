@@ -1,7 +1,7 @@
 <?php
 
 function error_handler($error){
-  header('HTTP/1.1 500 Internal Server Error');
+  http_response_code(500);
   $output = [
     'success' => false,
     'error' => $error->getMessage()
