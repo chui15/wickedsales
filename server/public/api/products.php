@@ -21,6 +21,13 @@ $query = "SELECT * from `Products`" . $whereClause;
 
 $result = mysqli_query($conn, $query);
 
+$rowCount = mysqli_num_rows($result);
+if(isset($_GET['id'])){
+  if ($rowCount < 1){
+    throw new Exception('invalid ID: ' . $_GET['id']);
+  }
+}
+
 if(!$result){
   throw new Exception('query error: ' . mysqli_error($conn));
 }
