@@ -8,7 +8,11 @@ require_once('db_connection.php');
 startUp();
 
 if(isset($_GET['id'])){
-  $whereClause = "WHERE `id` =" . $_GET['id'];
+  if (is_numeric($_GET['id'])){
+    $whereClause = "WHERE `id` =" . $_GET['id'];
+  } else {
+    throw new Exception('id needs to be a number');
+  }
 } else {
   $whereClause = "";
 }
