@@ -41,11 +41,12 @@ class ProductDetails extends React.Component {
             <img src={productImage} className="product-details-image"></img>
           </span>
         </div>
-        <div className="col-6 col-md-6">
+        <div className="col-6 col-md-6 align-self-center">
           <span className="product-details-name">{productName}</span>
           <span className="product-price">{'$' + priceRounded}</span>
           <span>{productShort}</span>
         </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       </div>
       </>
       );

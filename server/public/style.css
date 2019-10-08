@@ -7,6 +7,10 @@ h1 {
   text-align: center;
 }
 
+p {
+  margin-left: 5px;
+}
+
 .square {
   float: left;
   position: relative;
@@ -18,8 +22,8 @@ h1 {
 }
 
 .single-product {
-  width: 48%;
-  height: 52%;
+  width: 50%;
+  height: 70%;
   border: 2px gray solid;
   position: fixed;
   top: 50%;
