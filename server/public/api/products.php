@@ -19,7 +19,7 @@ if(isset($_GET['id'])){
 
 $query = "SELECT Images.product_id AS id,
 	Products.Name, Products.Price, Products.`Short Description`,
-  		GROUP_CONCAT(Products.Image) AS images
+  		GROUP_CONCAT(Images.url) AS images
     		FROM Images
       			JOIN Products
         			ON Images.product_id = Products.ID

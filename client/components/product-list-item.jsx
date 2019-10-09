@@ -8,7 +8,7 @@ class ProductListItem extends React.Component {
   }
 
   getDetails() {
-    this.props.setView('details', this.props.product.ID);
+    this.props.setView('details', this.props.product.id);
   }
 
   render() {
@@ -17,7 +17,7 @@ class ProductListItem extends React.Component {
     return (
       <div className="square col-sm-4">
         <span>
-          <img src={this.props.product.Image} className="product-image"></img>
+          <img src={this.props.product.images[0]} className="product-image"></img>
         </span>
         <h3>{this.props.product.Name}</h3>
         <span className="price">{'$' + priceRounded}</span>

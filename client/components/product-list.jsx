@@ -28,7 +28,7 @@ class ProductList extends React.Component {
     return (
       this.state.products.map(product => {
         return (
-          <ProductListItem key={product.ID}
+          <ProductListItem key={product.id}
             product={product} setView={this.setView}/>
         );
       })
