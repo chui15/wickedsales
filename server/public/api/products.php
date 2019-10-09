@@ -9,7 +9,7 @@ startUp();
 
 if(isset($_GET['id'])){
   if (is_numeric($_GET['id'])){
-    $whereClause = "WHERE `id` =" . $_GET['id'];
+    $whereClause = "WHERE Images.product_id =" . $_GET['id'];
   } else {
     throw new Exception('id needs to be a number');
   }
@@ -17,7 +17,14 @@ if(isset($_GET['id'])){
   $whereClause = "";
 }
 
-$query = "SELECT * from `Products`" . $whereClause;
+$query = "SELECT Images.product_id AS id,
+	Products.Name, Products.Price, Products.`Short Description`,
+  		GROUP_CONCAT(Products.Image) AS images
+    		FROM Images
+      			JOIN Products
+        			ON Images.product_id = Products.ID
+                  $whereClause
+            				GROUP BY Images.product_id" ;
 
 $result = mysqli_query($conn, $query);
 
@@ -34,10 +41,11 @@ if(!$result){
 
 $output = [];
 while($row = mysqli_fetch_assoc($result)){
+  $row['images'] = explode(',' , $row['images']);
   $output[] = $row;
 }
 
-$jsonData = json_encode($output); 
+$jsonData = json_encode($output);
 print($jsonData);
 
 ?>
