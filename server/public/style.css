@@ -66,11 +66,11 @@ p {
   display: block;
 }
 
-.btn-info {
+.view-details {
   margin: 15px;
 }
 
-.btn-success {
+.add-cart {
   display: block;
   margin-left: 0px;
   margin-top: 15px;

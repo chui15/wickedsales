@@ -22,7 +22,7 @@ class ProductListItem extends React.Component {
         <h3>{this.props.product.Name}</h3>
         <span className="price">{'$' + priceRounded}</span>
         <span>{this.props.product['Short Description']}</span>
-        <button type="button" className="btn btn-info" onClick={this.getDetails}>View Product Details</button>
+        <button type="button" className="btn btn-info view-details" onClick={this.getDetails}>View Product Details</button>
       </div>
     );
   }
