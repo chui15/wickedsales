@@ -28,7 +28,9 @@ class ProductDetails extends React.Component {
       let productName = this.state.product.Name;
       let productPrice = Number.parseInt(this.state.product.Price);
       let priceRounded = productPrice / Math.pow(10, 2);
-      let productImage = this.state.product.Image;
+      if (this.state.product.images) {
+        var productImage = this.state.product['images'][1];
+      }
       let productShort = this.state.product['Short Description'];
       return (
       <>
@@ -45,6 +47,7 @@ class ProductDetails extends React.Component {
           <span className="product-details-name">{productName}</span>
           <span className="product-price">{'$' + priceRounded}</span>
           <span>{productShort}</span>
+          <button type="button" onClick={() => this.props.addToCart(this.state.product)} className="btn btn-success align-self-start add-cart">Add To Cart</button>
         </div>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       </div>

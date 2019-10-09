@@ -66,8 +66,26 @@ p {
   display: block;
 }
 
-.btn-info {
+.view-details {
   margin: 15px;
+}
+
+.add-cart {
+  display: block;
+  margin-left: 0px;
+  margin-top: 15px;
+  padding: 10px;
+}
+
+.shopping-cart {
+  background-image: url('./images/shopping-cart.png');
+  background-size: cover;
+  height: 38px;
+  width: 40px;
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 10px;
+  opacity: 0.7;
 }
 
 .returnCatalog {
@@ -78,4 +96,9 @@ p {
 .returnCatalog:hover {
   cursor: pointer;
   color: blue;
+}
+
+.cart-header:hover{
+  cursor: pointer;
+  color: darkgray;
 }
