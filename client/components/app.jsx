@@ -68,7 +68,7 @@ class App extends React.Component {
     }
     return (
       <>
-      <Header cartItemCount={cartCount}/>
+      <Header cartItemCount={cartCount} setView={this.setView}/>
       {product}
       </>
     );

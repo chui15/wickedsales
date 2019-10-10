@@ -7,7 +7,7 @@ function Header(props) {
         <h1 className="col-8 align-self-start">Wicked Sales</h1>
         <div className="col-4 align-self-end cart-header">
           <h4 className="row align-items-center">{props.cartItemCount + ' Items'}
-            <div className="shopping-cart"></div>
+            <div className="shopping-cart" onClick={props.setView}></div>
           </h4>
         </div>
       </div>
