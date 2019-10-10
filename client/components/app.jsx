@@ -46,8 +46,7 @@ class App extends React.Component {
         this.setState({
           cart: copy
         });
-      })
-      .error(error => console.error('Fetch failed', error));
+      });
   }
 
   componentDidMount() {
@@ -58,12 +57,14 @@ class App extends React.Component {
     let product;
     if (this.state.view.name === 'catalog') {
       product = <ProductList setView={this.setView} />;
-    } else {
+    } else if (this.state.view.name === 'details') {
       product = <ProductDetails setView={this.setView} params={this.state.view.params} addToCart={this.addToCart}/>;
+    } else {
+      product = null;
     }
     let cartSummary;
     if (this.state.view.name === 'cart') {
-      cartSummary = <CartSummary cartItems={this.state.cart}/>;
+      cartSummary = <CartSummary cartItems={this.state.cart} setView={this.setView}/>;
     } else {
       cartSummary = null;
     }
@@ -75,7 +76,7 @@ class App extends React.Component {
     }
     return (
       <>
-      <Header cartItemCount={cartCount} setView={this.setView}/>
+      <Header cartItemCount={cartCount} setView={this.setView} params={this.state.view.params}/>
       {product}
       {cartSummary}
       </>

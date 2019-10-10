@@ -1,21 +1,24 @@
 import React from 'react';
 
-class CartSummaryItem extends React.Component {
-
-  render() {
-    let price = Number.parseFloat(this.props.item.Price);
-    let priceRounded = price / Math.pow(10, 2);
-    return (
-      <div className="row">
-        <span>
-          <img src={this.props.item.images[0]} className="item-image"></img>
+function CartSummaryItem(props) {
+  let price = Number.parseFloat(props.item.Price);
+  let priceRounded = price / Math.pow(10, 2);
+  return (
+    <>
+    <div className="cart-square row">
+      <div className="col-12 col-md-6">
+        <span className="ml-4">
+          <img src={props.item.images[0]} className="item-image"></img>
         </span>
-        <h3>{this.props.item.Name}</h3>
-        <span className="price">{'$' + priceRounded}</span>
-        <span>{this.props.item['Short Description']}</span>
       </div>
-    );
-  }
+      <div className="col-6 col-md-6 align-self-center">
+        <h3>{props.item.Name}</h3>
+        <span className="price">{'$' + priceRounded}</span>
+        <span>{props.item['Short Description']}</span>
+      </div>
+    </div>
+    </>
+  );
 }
 
 export default CartSummaryItem;
