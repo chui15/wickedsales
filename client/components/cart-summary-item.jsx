@@ -1,14 +1,6 @@
 import React from 'react';
 
 class CartSummaryItem extends React.Component {
-  constructor(props) {
-    super(props);
-    this.getSummary = this.getSummary.bind(this);
-  }
-
-  getSummary() {
-    this.props.setView('cart', {});
-  }
 
   render() {
     let price = Number.parseFloat(this.props.item.Price);
@@ -20,7 +12,7 @@ class CartSummaryItem extends React.Component {
         </span>
         <h3>{this.props.item.Name}</h3>
         <span className="price">{'$' + priceRounded}</span>
-        <span>{this.props.product['Short Description']}</span>
+        <span>{this.props.item['Short Description']}</span>
       </div>
     );
   }
