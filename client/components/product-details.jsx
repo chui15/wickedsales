@@ -15,8 +15,7 @@ class ProductDetails extends React.Component {
       .then(res => res.json())
       .then(data => this.setState({
         product: data[0]
-      }))
-      .catch(error => console.error('Fetch failed', error));
+      }));
   }
 
   switchView() {

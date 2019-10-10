@@ -7,6 +7,10 @@ h1 {
   text-align: center;
 }
 
+h2 {
+  margin-top: 30px;
+}
+
 p {
   margin-left: 5px;
 }
@@ -39,6 +43,23 @@ p {
   padding-top: 10px;
 }
 
+.item-image {
+  height: 250px;
+  width: 280px;
+  padding-top: 20px;
+}
+
+.item-total{
+  padding-top: 50px;
+}
+
+.cart-square {
+  border: 2px gray solid;
+  height: 300px;
+  width: 800px;
+  margin: 5%;
+}
+
 .product-details-name {
   margin-top: 20%;
   font-size: 40px;
@@ -68,6 +89,7 @@ p {
 
 .view-details {
   margin: 15px;
+  display: block;
 }
 
 .add-cart {

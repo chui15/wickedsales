@@ -1,7 +1,6 @@
 import React from 'react';
 
 class ProductListItem extends React.Component {
-  // eslint-disable-next-line no-useless-constructor
   constructor(props) {
     super(props);
     this.getDetails = this.getDetails.bind(this);

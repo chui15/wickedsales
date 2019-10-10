@@ -2,6 +2,7 @@ import React from 'react';
 import ProductList from './product-list';
 import Header from './header';
 import ProductDetails from './product-details';
+import CartSummary from './cartsummary';
 
 class App extends React.Component {
   constructor(props) {
@@ -45,8 +46,7 @@ class App extends React.Component {
         this.setState({
           cart: copy
         });
-      })
-      .error(error => console.error('Fetch failed', error));
+      });
   }
 
   componentDidMount() {
@@ -57,8 +57,16 @@ class App extends React.Component {
     let product;
     if (this.state.view.name === 'catalog') {
       product = <ProductList setView={this.setView} />;
-    } else {
+    } else if (this.state.view.name === 'details') {
       product = <ProductDetails setView={this.setView} params={this.state.view.params} addToCart={this.addToCart}/>;
+    } else {
+      product = null;
+    }
+    let cartSummary;
+    if (this.state.view.name === 'cart') {
+      cartSummary = <CartSummary cartItems={this.state.cart} setView={this.setView}/>;
+    } else {
+      cartSummary = null;
     }
     let cartCount;
     if (this.state.cart.length !== 0) {
@@ -68,8 +76,9 @@ class App extends React.Component {
     }
     return (
       <>
-      <Header cartItemCount={cartCount}/>
+      <Header cartItemCount={cartCount} setView={this.setView} params={this.state.view.params}/>
       {product}
+      {cartSummary}
       </>
     );
   }
