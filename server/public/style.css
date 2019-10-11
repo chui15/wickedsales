@@ -124,3 +124,24 @@ p {
   cursor: pointer;
   color: darkgray;
 }
+
+.checkout {
+  padding: 15px;
+}
+
+.checkout-total {
+  color: gray;
+  margin-top: 10px;
+}
+
+.form-container {
+  padding: 30px;
+}
+
+.credit-card-name, .shipping-name {
+  margin-top: 20px;
+}
+
+.shipping-address {
+  height: 200px;
+}
