@@ -1,4 +1,4 @@
-# wicked-sales
+# Wicked Sales
 
 A full stack LAMP & React shopping cart app.
 
