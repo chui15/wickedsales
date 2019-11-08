@@ -1,0 +1,157 @@
+body {
+  font-family: 'Hind Madurai', sans-serif;
+}
+
+h1 {
+  font-size: 40px;
+  text-align: center;
+}
+
+h2 {
+  margin-top: 30px;
+}
+
+p {
+  margin-left: 5px;
+}
+
+header {
+  background-color: rgb(150, 148, 148);
+}
+
+.header-title {
+  font-family: 'Wallpoet', cursive;
+  color: white;
+}
+
+.square {
+  float: left;
+  position: relative;
+  width: 260px;
+  height: 420px;
+  margin: 6%;
+  overflow: hidden;
+  border: 2px gray solid;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.single-product {
+  width: 50%;
+  height: 70%;
+  border: 2px gray solid;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.product-image {
+  height: 160px;
+  width: 180px;
+  justify-content: center;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.item-image {
+  height: 250px;
+  width: 280px;
+  padding-top: 20px;
+}
+
+.item-total{
+  padding-top: 50px;
+}
+
+.cart-square {
+  border: 2px gray solid;
+  height: 300px;
+  width: 800px;
+  margin: 5%;
+}
+
+.product-details-name {
+  margin-top: 20%;
+  font-size: 40px;
+  padding-top: 50px;
+  margin-bottom: 10px;
+}
+
+.product-price {
+  color: gray;
+  font-size: 20px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.product-details-image {
+  height: 300px;
+  width: 300px;
+  padding: 20px;
+  justify-content: center;
+}
+
+.price {
+  color: gray;
+  padding-bottom: 10px;
+  display: block;
+}
+
+.view-details {
+  margin: 15px;
+}
+
+.add-cart {
+  display: block;
+  margin-left: 0px;
+  margin-top: 15px;
+  padding: 10px;
+}
+
+.shopping-cart {
+  background-image: url('./images/shopping-cart.png');
+  background-size: cover;
+  height: 38px;
+  width: 40px;
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 10px;
+  opacity: 0.7;
+}
+
+.returnCatalog {
+  color: gray;
+  font-size: 20px;
+}
+
+.returnCatalog:hover {
+  cursor: pointer;
+  color: blue;
+}
+
+.cart-header:hover{
+  cursor: pointer;
+  color: darkgray;
+}
+
+.checkout {
+  padding: 15px;
+}
+
+.checkout-total {
+  color: gray;
+  margin-top: 10px;
+}
+
+.form-container {
+  padding: 30px;
+}
+
+.credit-card-name, .shipping-name {
+  margin-top: 20px;
+}
+
+.shipping-address {
+  height: 200px;
+}
