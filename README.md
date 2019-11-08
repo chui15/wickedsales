@@ -1,6 +1,6 @@
 # Wicked Sales
 
-A full stack LAMP & React shopping cart app.
+A full stack LAMP & React shopping cart app made for desktop browsers.
 
 ## Technologies Used
 
@@ -12,3 +12,14 @@ A full stack LAMP & React shopping cart app.
 - HTML5
 - CSS3
 - AWS EC2
+
+## Live Demo
+
+Try the application live at [https://wickedsales.christiehui.com]
+
+## Features
+
+- User can view a catalog of products.
+- User can view the details of an individual product.
+- User can add a product to their cart.
+- User can "check out" the items in their cart.
