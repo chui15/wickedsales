@@ -1,5 +1,5 @@
 body {
-  font-family: Helvetica;
+  font-family: 'Hind Madurai', sans-serif;
 }
 
 h1 {
@@ -15,14 +15,25 @@ p {
   margin-left: 5px;
 }
 
+header {
+  background-color: rgb(150, 148, 148);
+}
+
+.header-title {
+  font-family: 'Wallpoet', cursive;
+  color: white;
+}
+
 .square {
   float: left;
   position: relative;
-  width: 250px;
-  height: 430px;
+  width: 260px;
+  height: 420px;
   margin: 6%;
   overflow: hidden;
   border: 2px gray solid;
+  border-radius: 10px;
+  text-align: center;
 }
 
 .single-product {
@@ -89,7 +100,6 @@ p {
 
 .view-details {
   margin: 15px;
-  display: block;
 }
 
 .add-cart {
