@@ -71,7 +71,7 @@ class CheckoutForm extends React.Component {
           <h5 className="credit-card-name">Credit Card</h5>
           <input type="text" className="form-control form-rounded credit-card" value={this.state.creditCard} placeholder="Credit Card Number" onChange={this.handleCreditCard}></input>
           <h5 className="shipping-name">Shipping Address</h5>
-          <input type="text" className="form-control form-rounded shipping-address" value={this.state.shippingAddress} onChange={this.handleShippingAddress}></input>
+          <textarea rows="4" cols="50" className="form-control form-rounded shipping-address" value={this.state.shippingAddress} onChange={this.handleShippingAddress}></textarea>
         </form>
       </div>
       <div className="row">

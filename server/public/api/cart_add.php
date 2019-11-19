@@ -42,7 +42,6 @@ $productData = [];
 while ($row = mysqli_fetch_assoc($priceResult)){
   $productData = $row;
 }
-$productJSON= json_encode($productData);
 
 $startQuery = "START TRANSACTION";
 $startResult = mysqli_query($conn, $startQuery);

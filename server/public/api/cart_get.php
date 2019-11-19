@@ -6,13 +6,12 @@ if (!defined('INTERNAL')) {
 
 if(empty($_SESSION['cartId'])){
   $data = json_encode([]);
-  print($data);
   exit();
 }
 
 $cartID = intval($_SESSION['cartId']);
 
-$dummyDataQuery = "SELECT Products.`ID`, Products.`Price`, Products.`Name`, Products.`Short Description`, Products.`Image`, cartItems.count FROM cartItems JOIN Products WHERE cartItems.productID = Products.ID";
+$dummyDataQuery = "SELECT Products.`ID`, Products.`Price`, Products.`Name`, Products.`Short Description`, Products.`Image`, cartItems.count FROM cartItems JOIN Products WHERE cartItems.productID = Products.ID && cartItems.`cartID` = {$cartID}";
 $dummyResult = mysqli_query($conn, $dummyDataQuery);
 
 if(!$dummyResult){

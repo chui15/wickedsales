@@ -33,22 +33,24 @@ class App extends React.Component {
   getCartItems() {
     fetch('/api/cart.php')
       .then(res => res.json())
-      .then(data => this.setState({
-        cart: this.state.cart.concat(data)
-      }))
+      .then(data => {
+        this.setState({
+          cart: this.state.cart.concat(data)
+        });
+      })
       .catch(error => console.error('Fetch failed', error));
   }
 
   addToCart(product) {
     fetch('/api/cart.php', { method: 'POST', body: JSON.stringify(product), headers: { 'Content-Type': 'application/json' } })
-      .then(res => res.json())
       .then(data => {
         let copy = [...this.state.cart];
-        copy.push(data);
+        copy.push(product);
         this.setState({
           cart: copy
         });
-      });
+      })
+      .catch(error => console.error(error));
   }
 
   placeOrder(order) {

@@ -8,7 +8,7 @@ function CartSummaryItem(props) {
     <div className="cart-square row">
       <div className="col-12 col-md-6">
         <span className="ml-4">
-          <img src={props.item.images[0]} className="item-image"></img>
+          <img src={props.item.Image} className="item-image"></img>
         </span>
       </div>
       <div className="col-6 col-md-6 align-self-center">
