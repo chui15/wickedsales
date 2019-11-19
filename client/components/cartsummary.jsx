@@ -29,7 +29,7 @@ class CartSummary extends React.Component {
         <div>
           <span className="returnCatalog ml-3" onClick={this.switchView}> &#8592; Back To Catalog</span>
         </div>
-        <div className>
+        <div>
           <h3 className="ml-4">There are currently no items in your cart.</h3>
         </div>
         <h3 className="ml-4 item-total">Item Total: {'$' + initialPrice}</h3>
@@ -38,7 +38,7 @@ class CartSummary extends React.Component {
     } else {
       let cartItem = this.props.cartItems.map(item => {
         return (
-          <CartSummaryItem key={item.id}
+          <CartSummaryItem key={item['ID']}
             item={item} setView={this.setView} />
         );
       });
