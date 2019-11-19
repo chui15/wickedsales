@@ -11,7 +11,7 @@ if(empty($_SESSION['cartId'])){
 
 $cartID = intval($_SESSION['cartId']);
 
-$dummyDataQuery = "SELECT Products.`ID`, Products.`Price`, Products.`Name`, Products.`Short Description`, Products.`Image`, cartItems.count FROM cartItems JOIN Products WHERE cartItems.productID = Products.ID && cartItems.`cartID` = {$cartID}";
+$dummyDataQuery = "SELECT Products.`ID`, Products.`Price`, Products.`Name`, Products.`Short Description`, Products.`Image`, cartItems.count FROM cartItems JOIN Products WHERE cartItems.productID = Products.ID && cartItems.cartID = {$cartID}";
 $dummyResult = mysqli_query($conn, $dummyDataQuery);
 
 if(!$dummyResult){
