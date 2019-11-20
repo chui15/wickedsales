@@ -1,4 +1,4 @@
-# Wicked Sales
+# 許願 (Xu Yuan) Shop
 
 A full stack LAMP & React shopping cart app made for desktop browsers.
 
@@ -15,7 +15,7 @@ A full stack LAMP & React shopping cart app made for desktop browsers.
 
 ## Live Demo
 
-Try the application live at [https://wickedsales.christiehui.com]
+Try the application live at [https://xuyuan.christiehui.com]
 
 ## Features
 
