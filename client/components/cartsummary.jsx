@@ -30,7 +30,7 @@ class CartSummary extends React.Component {
           <span className="returnCatalog ml-3" onClick={this.switchView}> &#8592; Back To Catalog</span>
         </div>
         <div>
-          <h3 className="ml-4">There are currently no items in your cart.</h3>
+          <h3 className="ml-4 empty-cart">There are currently no items in your cart.</h3>
         </div>
         <h3 className="ml-4 item-total">Item Total: {'$' + initialPrice}</h3>
         </>
