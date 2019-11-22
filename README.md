@@ -13,6 +13,10 @@ A full stack LAMP & React shopping cart app made for desktop browsers.
 - CSS3
 - AWS EC2
 
+## Preview
+
+![Xuyuan Shop](server/public/images/xuyuanshop.png)
+
 ## Live Demo
 
 Try the application live at [https://xuyuan.christiehui.com]
