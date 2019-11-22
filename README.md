@@ -19,7 +19,8 @@ A full stack LAMP & React shopping cart app made for desktop browsers.
 
 ## Live Demo
 
-Try the application live at [https://xuyuan.christiehui.com]
+Try the application live at [http://xuyuan.christiehui.com]
+*Note: application is best viewed on desktop browsers (at the moment).
 
 ## Features
 
