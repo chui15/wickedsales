@@ -14,10 +14,11 @@ class Header extends React.Component {
     return (
       <header>
         <div className="row">
-          <h1 className="col-9 align-self-start header-title">Wicked Sales</h1>
-          <div className="col-3 align-self-end cart-header">
-            <h4 className="row align-items-center header-title">{this.props.cartItemCount + ' Items'}
-              <div className="shopping-cart" onClick={this.getSummary}></div>
+          <div className="col-3 ml-4 mr-5 align-self-start header-definition">許願 (xu3 yuan4): to make a wish / to make a vow / to promise a reward.</div>
+          <h1 className="col-4 ml-3 mr-5 align-self-start header-title">許願 Shop.</h1>
+          <div className="col-2 ml-5 align-self-end cart-header">
+            <h4 className="row align-items-center header-title" onClick={this.getSummary}>{this.props.cartItemCount + ' Items'}
+              <img src="https://img.icons8.com/dotty/80/000000/favorite-cart.png" className="shopping-cart"></img>
             </h4>
           </div>
         </div>

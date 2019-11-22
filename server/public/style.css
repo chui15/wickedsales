@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito|Quicksand');
+
 body {
-  font-family: 'Hind Madurai', sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 h1 {
@@ -16,42 +18,64 @@ p {
 }
 
 header {
-  background-color: rgb(150, 148, 148);
+  background-color: #F9E7E7;
+  border-bottom: 1px solid darkgray;
+  box-shadow: 0px 2px rgb(211, 211, 211);
+  margin-bottom: 50px;
 }
 
-.header-title {
-  font-family: 'Wallpoet', cursive;
-  color: white;
+.header-title, .header-definition {
+  font-family: 'Quicksand', sans-serif;
+  font-style: italic;
+  font-weight: bolder;
+  color: #BA7BA1;
+}
+
+.header-definition {
+  font-style: normal;
+  font-size: 15px;
+  margin-top: 5px;
 }
 
 .square {
   float: left;
   position: relative;
-  width: 260px;
-  height: 420px;
-  margin: 6%;
+  width: 280px;
+  height: 470px;
+  margin: 1%;
   overflow: hidden;
-  border: 2px gray solid;
-  border-radius: 10px;
-  text-align: center;
 }
 
 .single-product {
-  width: 50%;
+  width: 60%;
   height: 70%;
-  border: 2px gray solid;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
+.product-long {
+  margin-top: 10px;
+}
+
+.product-info {
+  margin-left: 5%;
+}
+
 .product-image {
-  height: 160px;
-  width: 180px;
-  justify-content: center;
-  padding-bottom: 10px;
-  padding-top: 10px;
+  height: 65%;
+  padding: 10px;
+}
+
+.product-description {
+  display: block;
+  text-align: left;
+  font-size: 15px;
+}
+
+.product-image:hover {
+  cursor: pointer;
 }
 
 .item-image {
@@ -64,75 +88,92 @@ header {
   padding-top: 50px;
 }
 
-.cart-square {
-  border: 2px gray solid;
-  height: 300px;
-  width: 800px;
-  margin: 5%;
+.product-title {
+  font-size: 18px;
+  color: #BA7BA1;
+  font-weight: bolder;
+  display: block;
+  margin-top: 20px;
+}
+
+.product-name {
+  display: block;
+  margin-top: 20px;
+  text-align: left;
+  font-size: 18px;
+  font-weight: bolder;
 }
 
 .product-details-name {
   margin-top: 20%;
-  font-size: 40px;
+  font-size: 35px;
   padding-top: 50px;
   margin-bottom: 10px;
 }
 
 .product-price {
-  color: gray;
   font-size: 20px;
+  color: #BA7BA1;
+  font-weight: bold;
   display: block;
   margin-bottom: 10px;
 }
 
 .product-details-image {
-  height: 300px;
-  width: 300px;
-  padding: 20px;
-  justify-content: center;
+  width: 88%;
+  padding: 5px;
 }
 
 .price {
-  color: gray;
-  padding-bottom: 10px;
+  color: #BA7BA1;
   display: block;
+  text-align: left;
+  font-size: 17px;
+  font-weight: bold;
+  padding-bottom: 10px;
+  margin-top: 10px;
 }
 
 .view-details {
   margin: 15px;
+  display: block;
 }
 
 .add-cart {
   display: block;
   margin-left: 0px;
   margin-top: 15px;
-  padding: 10px;
+  background-color: #BA7BA1;
+  color: white;
+}
+
+.add-cart:hover {
+  color: rgb(255, 230, 255);
 }
 
 .shopping-cart {
-  background-image: url('./images/shopping-cart.png');
-  background-size: cover;
-  height: 38px;
-  width: 40px;
+  height: 46px;
   display: inline-block;
-  margin-top: 10px;
-  margin-left: 10px;
-  opacity: 0.7;
+  margin-left: 12px;
 }
 
 .returnCatalog {
-  color: gray;
   font-size: 20px;
+  margin-left: 5%;
 }
 
 .returnCatalog:hover {
   cursor: pointer;
-  color: blue;
+  color: #BA7BA1;
 }
 
 .cart-header:hover{
   cursor: pointer;
-  color: darkgray;
+  color: white;
+}
+
+.empty-cart {
+  margin-top: 20px;
 }
 
 .checkout {
