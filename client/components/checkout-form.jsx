@@ -63,7 +63,7 @@ class CheckoutForm extends React.Component {
       <div>
         <h2 className="ml-5">Checkout</h2>
       </div>
-      <h4 className="ml-5 checkout-total">Order Total: {'$' + totalPriceRounded}</h4>
+      <h4 className="ml-5 checkout-total">Order Total: {'$' + totalPriceRounded + '.00'}</h4>
       <div className="form-container">
         <form className="col-8">
           <h5>Name</h5>
@@ -79,7 +79,7 @@ class CheckoutForm extends React.Component {
           <span className="returnCatalog" onClick={this.switchView}> &#8592; Continue Shopping</span>
         </div>
         <span className="col-md-4 align-self-center">
-          <button type="button" className="btn btn-primary checkout" onClick={this.handleSubmit}>Place Order</button>
+          <button type="button" className="btn checkout" onClick={this.handleSubmit}>Place Order</button>
         </span>
       </div>
       </>

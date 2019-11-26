@@ -2,6 +2,7 @@
 
 body {
   font-family: 'Nunito', sans-serif;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -21,7 +22,6 @@ header {
   background-color: #F9E7E7;
   border-bottom: 1px solid darkgray;
   box-shadow: 0px 2px rgb(211, 211, 211);
-  margin-bottom: 50px;
 }
 
 .header-title, .header-definition {
@@ -31,10 +31,33 @@ header {
   color: #BA7BA1;
 }
 
+.header-title:hover {
+  cursor: pointer;
+}
+
 .header-definition {
   font-style: normal;
   font-size: 15px;
   margin-top: 5px;
+}
+
+.nav-bar {
+  margin-top: 2px;
+  border-bottom: 1px solid darkgray;
+  box-shadow: 0px 1px rgb(211, 211, 211);
+  margin-bottom: 20px;
+}
+
+.nav-link {
+  display: inline-block;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  margin-left: 25px;
+}
+
+.nav-link:hover {
+  cursor: pointer;
+  color: #BA7BA1;
 }
 
 .square {
@@ -80,12 +103,21 @@ header {
 
 .item-image {
   height: 250px;
-  width: 280px;
+  width: 260px;
   padding-top: 20px;
+}
+
+.item-count {
+  display: block;
+  color: #BA7BA1;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .item-total{
   padding-top: 50px;
+  font-weight: bold;
+  color: #BA7BA1;
 }
 
 .product-title {
@@ -120,8 +152,9 @@ header {
 }
 
 .product-details-image {
-  width: 88%;
-  padding: 5px;
+  width: 290px;
+  height: 290px;
+  padding: 25px;
 }
 
 .price {
@@ -160,6 +193,10 @@ header {
 .returnCatalog {
   font-size: 20px;
   margin-left: 5%;
+  border: 1px solid rgb(199, 199, 199);
+  border-radius: 5px;
+  padding: 5px;
+  box-shadow: 1px 1px 1px lightgray;
 }
 
 .returnCatalog:hover {
@@ -176,12 +213,37 @@ header {
   margin-top: 20px;
 }
 
+.cart-title {
+  color: #BA7BA1;
+  margin-left: 5%;
+  font-weight: bold;
+}
+
+.delete-cart {
+  display: block;
+  color: #BA7BA1;
+  font-size: 17px;
+  margin-top: 10px;
+}
+
+.delete-cart:hover {
+  cursor: pointer;
+  color: red;
+}
+
 .checkout {
-  padding: 15px;
+  padding: 12px;
+  background-color: #BA7BA1;
+  color: white;
+}
+
+.checkout:hover {
+  color: rgb(255, 230, 255);
+  border: 1px 1px solid gray;
 }
 
 .checkout-total {
-  color: gray;
+  color: #BA7BA1;
   margin-top: 10px;
 }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import ProductList from './product-list';
 import Header from './header';
+import NavBar from './navbar';
 import ProductDetails from './product-details';
 import CartSummary from './cartsummary';
 import CheckoutForm from './checkout-form';
@@ -99,6 +100,7 @@ class App extends React.Component {
     return (
       <>
       <Header cartItemCount={cartCount} setView={this.setView} params={this.state.view.params}/>
+      <NavBar setView={this.setView} params={this.state.view.params}/>
       {product}
       {cartSummary}
       {checkoutForm}
