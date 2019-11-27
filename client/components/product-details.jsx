@@ -32,6 +32,14 @@ class ProductDetails extends React.Component {
         var productImage2 = this.state.product['images'][2];
       }
       let productLong = this.state.product['Long Description'];
+      let productToAdd = {
+        'Long Description': productLong,
+        'Name': productName,
+        'Price': productPrice,
+        'Short Description': this.state.product['Short Description'],
+        'id': this.state.product.id,
+        'Image': productImage1
+      };
       return (
       <>
       <div className="col-sm-4">
@@ -50,7 +58,7 @@ class ProductDetails extends React.Component {
           <span>*One Size.</span>
           <p className="product-title">Product Description:</p>
           <p className="product-long">{productLong}</p>
-          <button type="button" onClick={() => this.props.addToCart(this.state.product)} className="btn align-self-start add-cart">Add To Cart</button>
+          <button type="button" onClick={() => this.props.addToCart(productToAdd)} className="btn align-self-start add-cart">Add To Cart</button>
         </div>
       </div>
       </>

@@ -14,3 +14,5 @@ $result = mysqli_query($conn, $query);
 if (!$result) {
   throw new Exception("The connection failed or no data was received!",  mysqli_connect_error());
 }
+
+?>
