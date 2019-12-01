@@ -235,6 +235,7 @@ header {
   padding: 12px;
   background-color: #BA7BA1;
   color: white;
+  margin-bottom: 10px;
 }
 
 .checkout:hover {
@@ -245,6 +246,7 @@ header {
 .checkout-total {
   color: #BA7BA1;
   margin-top: 10px;
+  font-weight: bold;
 }
 
 .form-container {
@@ -257,4 +259,9 @@ header {
 
 .shipping-address {
   height: 200px;
+}
+
+.field-check {
+  font-size: 15px;
+  color: red;
 }
