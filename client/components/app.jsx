@@ -59,7 +59,6 @@ class App extends React.Component {
       cart: this.state.cart.concat(order)
     });
     fetch('/api/orders.php', { method: 'POST', body: JSON.stringify(order), headers: { 'Content-Type': 'application/json' } })
-      .then(res => res.json())
       .then(this.setView('catalog', {}))
       .then(this.setState({
         cart: []

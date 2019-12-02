@@ -65,8 +65,12 @@ class CheckoutForm extends React.Component {
 
   render() {
     let totalPrice = 0;
-    this.props.cartItems.map(individualPrice => {
-      totalPrice += Number.parseFloat(individualPrice.Price);
+    this.props.cartItems.map(item => {
+      if (Number.parseInt(item['count']) === 1) {
+        totalPrice += Number.parseFloat(item.Price);
+      } else {
+        totalPrice += (Number.parseFloat(item.Price) * Number.parseInt(item['count']));
+      }
     });
     let totalPriceRounded = totalPrice.toFixed(2) / Math.pow(10, 2);
     return (

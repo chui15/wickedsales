@@ -1,12 +1,17 @@
 <?php
 
+define('INTERNAL', true);
 require_once('functions.php');
+set_exception_handler('error_handler');
+session_start();
+require_once('db_connection.php');
 
-header('Content-Type: application/json');
-
-if (!defined('INTERNAL')) {
-  exit('Direct Access not allowed');
+if (empty($_SESSION['cartId'])) {
+  $data = json_encode([]);
+  exit();
 }
+
+$cartID = intval($_SESSION['cartId']);
 
 $data = json_decode(file_get_contents('php://input'), 1);
 
@@ -23,7 +28,7 @@ if (isset($data['shippingAddress'])) {
   $errors[] = 'No address provided';
 }
 if (isset($data['creditCard'])){
-  $creditCard = $data['creditCard'];
+  $creditCard = intval($data['creditCard']);
 } else {
   $errors[] = 'No credit card info provided';
 }
@@ -33,20 +38,20 @@ if (count($errors)) {
   exit;
 }
 
-$query = "INSERT INTO `Orders` (`Name`, `Address`, `creditCard`) VALUES ($name, $address, $creditCard)";
+$insertQuery = "INSERT INTO `Orders` (`Name`, `Address`, `creditCard`, `cartID`) VALUES ($name, $address, $creditCard, $cartID)";
 
-$result = mysqli_query($conn, $query);
+$result = mysqli_query($conn, $insertQuery);
 
 if (!$result) {
   throw new Exception('order add insert query error: ' . mysqli_error($conn));
 }
 
-$output = [];
-while ($row = mysqli_fetch_assoc($result)) {
-  $output[] = $row;
-}
+$clearQuery = "DELETE FROM `cartItems` WHERE `cartID` = {$cartID}";
 
-$jsonData = json_encode($output);
-print($jsonData);
+$clearResult = mysqli_query($conn, $clearQuery);
+
+if (!$clearResult){
+  throw new Exception('cart clear query error: ' . mysqli_error($conn));
+}
 
 ?>
