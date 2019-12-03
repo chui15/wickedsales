@@ -6,39 +6,33 @@ set_exception_handler('error_handler');
 session_start();
 require_once('db_connection.php');
 
-if (empty($_SESSION['cartId'])) {
+if (!isset($_SESSION['cartId'])) {
   $data = json_encode([]);
   exit();
 }
 
 $cartID = intval($_SESSION['cartId']);
 
-$data = json_decode(file_get_contents('php://input'), 1);
+$data = json_decode(file_get_contents('php://input'), true);
 
-$errors = [];
 
 if (isset($data['name'])) {
   $name = $data['name'];
 } else {
-  $errors[] = 'No name provided';
+  throw new Exception('name error ' . mysqli_error($conn));
 }
 if (isset($data['shippingAddress'])) {
   $address = $data['shippingAddress'];
 } else {
-  $errors[] = 'No address provided';
+  throw new Exception('shipping address error ' . mysqli_error($conn));
 }
 if (isset($data['creditCard'])){
   $creditCard = intval($data['creditCard']);
 } else {
-  $errors[] = 'No credit card info provided';
+  throw new Exception('credit card error ' . mysqli_error($conn));
 }
 
-if (count($errors)) {
-  print_r($errors);
-  exit;
-}
-
-$insertQuery = "INSERT INTO `Orders` (`Name`, `Address`, `creditCard`, `cartID`) VALUES ($name, $address, $creditCard, $cartID)";
+$insertQuery = "INSERT INTO `Orders` (`Name`, `Address`, `creditCard`, `cartID`) VALUES ('$name', '$address', $creditCard, $cartID)";
 
 $result = mysqli_query($conn, $insertQuery);
 
@@ -53,5 +47,15 @@ $clearResult = mysqli_query($conn, $clearQuery);
 if (!$clearResult){
   throw new Exception('cart clear query error: ' . mysqli_error($conn));
 }
+
+print(json_encode($data));
+
+// $getUpdatedOrders = "SELECT * FROM `Orders`";
+
+// $ordersResult = mysqli_query($conn, $getUpdatedOrders);
+
+// if (!$result) {
+//   throw new Exception('sql error ' . mysqli_error($conn));
+// }
 
 ?>

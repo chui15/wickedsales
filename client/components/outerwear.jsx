@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductListItem from './product-list-item';
 
-class Tops extends React.Component {
+class Outerwear extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,7 +11,7 @@ class Tops extends React.Component {
   }
 
   getProducts() {
-    fetch('/api/tops.php')
+    fetch('/api/outerwear.php')
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -37,4 +37,4 @@ class Tops extends React.Component {
 
 }
 
-export default Tops;
+export default Outerwear;

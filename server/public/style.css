@@ -53,6 +53,7 @@ header {
   font-family: 'Quicksand', sans-serif;
   font-weight: bold;
   margin-left: 25px;
+  color: black;
 }
 
 .nav-link:hover {

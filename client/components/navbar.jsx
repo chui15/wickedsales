@@ -1,19 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class NavBar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.setView = this.props.setView;
-  }
 
   render() {
     return (
       <div className="row nav-bar">
         <div className="col align-items-start">
-          <h5 className="nav-link">Tops</h5>
-          <h5 className="nav-link">Outerwear</h5>
-          <h5 className="nav-link">Bottoms</h5>
-          <h5 className="nav-link">Accessories</h5>
+          <Link to="/tops" className="nav-link">Tops</Link>
+          <Link to="/outerwear" className="nav-link">Outerwear</Link>
+          <Link to="/bottoms" className="nav-link">Bottoms</Link>
+          <Link to="/accessories" className="nav-link">Accessories</Link>
         </div>
       </div>
     );

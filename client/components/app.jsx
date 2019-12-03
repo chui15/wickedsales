@@ -1,10 +1,15 @@
 import React from 'react';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import ProductList from './product-list';
 import Header from './header';
 import NavBar from './navbar';
 import ProductDetails from './product-details';
 import CartSummary from './cartsummary';
 import CheckoutForm from './checkout-form';
+import Tops from './tops';
+import Outerwear from './outerwear';
+import Bottoms from './bottoms';
+import Accessories from './accessories';
 
 class App extends React.Component {
   constructor(props) {
@@ -58,11 +63,13 @@ class App extends React.Component {
     this.setState({
       cart: this.state.cart.concat(order)
     });
-    fetch('/api/orders.php', { method: 'POST', body: JSON.stringify(order), headers: { 'Content-Type': 'application/json' } })
+    fetch('/api/orders.php', { method: 'POST', body: JSON.stringify(order) })
+      .then(response => response.json())
       .then(this.setView('catalog', {}))
       .then(this.setState({
         cart: []
-      }));
+      }))
+      .catch(err => console.error(err));
   }
 
   componentDidMount() {
@@ -103,9 +110,25 @@ class App extends React.Component {
       {product}
       {cartSummary}
       {checkoutForm}
+      <div>
+        <Switch>
+          <Route path="/tops">
+            <Tops />
+          </Route>
+          <Route path="/outerwear">
+            <Outerwear />
+          </Route>
+          <Route path="/bottoms">
+            <Bottoms />
+          </Route>
+          <Route path="/accessories">
+            <Accessories />
+          </Route>
+        </Switch>
+      </div>
       </>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
