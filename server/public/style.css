@@ -266,3 +266,29 @@ header {
   font-size: 15px;
   color: red;
 }
+
+.transaction-modal {
+    background-color: white;
+    width: 45%;
+    height: 30vh;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px gray;
+    border: 2px solid #BA7BA1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.modal-title {
+  font-weight: bold;
+  text-align: center;
+  font-size: 21px;
+  margin-top: 10px;
+}
+
+.modal-message {
+  margin-top: 10%;
+  left: 50%;
+}

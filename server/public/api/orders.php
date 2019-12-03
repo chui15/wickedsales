@@ -50,12 +50,4 @@ if (!$clearResult){
 
 print(json_encode($data));
 
-// $getUpdatedOrders = "SELECT * FROM `Orders`";
-
-// $ordersResult = mysqli_query($conn, $getUpdatedOrders);
-
-// if (!$result) {
-//   throw new Exception('sql error ' . mysqli_error($conn));
-// }
-
 ?>

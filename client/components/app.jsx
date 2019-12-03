@@ -65,10 +65,14 @@ class App extends React.Component {
     });
     fetch('/api/orders.php', { method: 'POST', body: JSON.stringify(order) })
       .then(response => response.json())
-      .then(this.setView('catalog', {}))
       .then(this.setState({
         cart: []
       }))
+      .then(() => {
+        setTimeout(() => {
+          this.setView('catalog', {});
+        }, 5000);
+      })
       .catch(err => console.error(err));
   }
 

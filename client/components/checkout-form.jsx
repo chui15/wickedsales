@@ -1,4 +1,5 @@
 import React from 'react';
+import TransactionModal from './transaction-modal';
 
 class CheckoutForm extends React.Component {
   constructor(props) {
@@ -9,7 +10,8 @@ class CheckoutForm extends React.Component {
       shippingAddress: '',
       nameCheck: '',
       creditCardCheck: '',
-      shippingAddressCheck: ''
+      shippingAddressCheck: '',
+      orderPlaced: false
     };
     this.switchView = this.switchView.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
@@ -58,12 +60,25 @@ class CheckoutForm extends React.Component {
       this.setState({
         name: '',
         creditCard: '',
-        shippingAddress: ''
+        shippingAddress: '',
+        orderPlaced: true
       });
     }
   }
 
+  componentWillUnmount() {
+    this.setState({
+      orderPlaced: false
+    });
+  }
+
   render() {
+    let confirmationModal;
+    if (this.state.orderPlaced === true) {
+      confirmationModal = <TransactionModal />;
+    } else {
+      confirmationModal = null;
+    }
     let totalPrice = 0;
     this.props.cartItems.map(item => {
       if (Number.parseInt(item['count']) === 1) {
@@ -100,6 +115,7 @@ class CheckoutForm extends React.Component {
           <button type="button" className="btn checkout" onClick={this.handleSubmit}>Place Order</button>
         </span>
       </div>
+      {confirmationModal}
       </>
     );
   }
