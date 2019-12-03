@@ -46,7 +46,7 @@ if (!$result) {
   throw new Exception('order add insert query error: ' . mysqli_error($conn));
 }
 
-$clearQuery = "DELETE FROM `cartItems` WHERE `cartID` = {$cartID}";
+$clearQuery = "DELETE FROM `cartItems` WHERE `cartID` = $cartID";
 
 $clearResult = mysqli_query($conn, $clearQuery);
 
