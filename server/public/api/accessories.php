@@ -10,22 +10,37 @@ session_start();
 
 require_once('db_connection.php');
 
-$cartID = intval($_SESSION['cartId']);
+startUp();
 
-$query = "SELECT * FROM `Products` WHERE Products.Category = 'Accessories'";
+$query = "SELECT Images.product_id AS id,
+	Products.Name, Products.Price, Products.`Short Description`, Products.`Long Description`,
+  		GROUP_CONCAT(Images.url) AS images
+    		FROM Images
+      			JOIN Products
+        			ON Images.product_id = Products.ID
+                  WHERE `Category` = 'Accessories'
+            				GROUP BY Images.product_id" ;
 
 $result = mysqli_query($conn, $query);
 
+$rowCount = mysqli_num_rows($result);
+if(isset($_GET['id'])){
+  if ($rowCount < 1){
+    throw new Exception('invalid ID: ' . $_GET['id']);
+  }
+}
+
 if(!$result){
-  throw new Exception ('query failed' . mysqli_error($conn));
+  throw new Exception('query error: ' . mysqli_error($conn));
 }
 
 $output = [];
 while($row = mysqli_fetch_assoc($result)){
+  $row['images'] = explode(',' , $row['images']);
   $output[] = $row;
 }
 
-$JSONdata = json_encode($output);
-print($JSONdata);
+$jsonData = json_encode($output);
+print($jsonData);
 
 ?>
