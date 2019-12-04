@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 08, 2019 at 03:20 AM
+-- Generation Time: Dec 04, 2019 at 12:43 AM
 -- Server version: 5.7.27-0ubuntu0.18.04.1
 -- PHP Version: 7.2.19-0ubuntu0.18.04.2
 
@@ -26,7 +26,6 @@ SET time_zone = "+00:00";
 -- Table structure for table `cart`
 --
 
-DROP TABLE IF EXISTS `cart`;
 CREATE TABLE `cart` (
   `id` mediumint(8) UNSIGNED NOT NULL,
   `created` datetime NOT NULL
@@ -37,7 +36,8 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `created`) VALUES
-(1, '2019-10-14 05:56:29');
+(1, '2019-12-02 00:14:29'),
+(2, '2019-12-03 04:47:38');
 
 -- --------------------------------------------------------
 
@@ -45,7 +45,6 @@ INSERT INTO `cart` (`id`, `created`) VALUES
 -- Table structure for table `cartItems`
 --
 
-DROP TABLE IF EXISTS `cartItems`;
 CREATE TABLE `cartItems` (
   `id` mediumint(8) UNSIGNED NOT NULL,
   `productID` mediumint(8) UNSIGNED NOT NULL,
@@ -56,21 +55,12 @@ CREATE TABLE `cartItems` (
   `cartID` mediumint(8) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `cartItems`
---
-
-INSERT INTO `cartItems` (`id`, `productID`, `count`, `price`, `added`, `updated`, `cartID`) VALUES
-(1, 1, 2, 2999, '2019-10-14 05:56:29', '2019-10-14 05:58:50', 1),
-(2, 2, 1, 2595, '2019-10-14 05:57:47', '2019-10-14 05:57:47', 1);
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `Images`
 --
 
-DROP TABLE IF EXISTS `Images`;
 CREATE TABLE `Images` (
   `id` tinyint(4) NOT NULL,
   `url` varchar(255) NOT NULL,
@@ -82,18 +72,44 @@ CREATE TABLE `Images` (
 --
 
 INSERT INTO `Images` (`id`, `url`, `product_id`) VALUES
-(1, 'https://bit.ly/2JtVNE6', 1),
-(2, 'images/shakeweight.jpg', 1),
-(3, 'https://bit.ly/2w9C3Nm', 2),
-(4, 'images/shamwow.jpg', 2),
-(5, 'https://bit.ly/2LVHYAk', 3),
-(6, 'images/snuggie.jpg', 3),
-(7, 'https://bit.ly/2EjCU2a', 4),
-(8, 'images/waxvac.jpg', 4),
-(9, 'https://bit.ly/2VD80b8', 5),
-(10, 'images/ostrichpillow.jpg', 5),
-(11, 'https://bit.ly/2w9EmzO', 6),
-(12, 'images/tatermitts.jpg', 6);
+(1, 'images/offshoulder1.jpg', 1),
+(2, 'images/offshoulder2.jpg', 1),
+(3, 'images/balloontop1.jpg', 2),
+(4, 'images/balloontop2.jpg', 2),
+(5, 'images/cottonpants1.jpg', 3),
+(6, 'images/cottonpants2.jpg', 3),
+(7, 'images/sherpa1.jpg', 4),
+(8, 'images/sherpa2.jpg', 4),
+(9, 'images/hskirt1.jpg', 5),
+(10, 'images/hskirt2.jpg', 5),
+(11, 'images/peanuts2.jpg', 6),
+(12, 'images/peanuts1.jpg', 6),
+(13, 'images/offshoulder3.jpg', 1),
+(14, 'images/balloontop3.jpg', 2),
+(15, 'images/cottonpants3.jpg', 3),
+(16, 'images/sherpa3.jpg', 4),
+(17, 'images/hskirt3.jpg', 5),
+(18, 'images/peanuts3.jpg', 6),
+(19, 'images/checkshirt1.jpg', 7),
+(20, 'images/checkshirt2.jpg', 7),
+(21, 'images/checkshirt3.jpg', 7),
+(22, 'images/widepants1.jpg', 8),
+(23, 'images/widepants2.jpg', 8),
+(24, 'images/widepants3.jpg', 8);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Orders`
+--
+
+CREATE TABLE `Orders` (
+  `id` tinyint(6) NOT NULL,
+  `Name` varchar(62) NOT NULL,
+  `Address` varchar(255) NOT NULL,
+  `creditCard` varchar(20) NOT NULL,
+  `cartID` tinyint(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -101,27 +117,29 @@ INSERT INTO `Images` (`id`, `url`, `product_id`) VALUES
 -- Table structure for table `Products`
 --
 
-DROP TABLE IF EXISTS `Products`;
 CREATE TABLE `Products` (
   `ID` smallint(5) UNSIGNED NOT NULL,
   `Name` varchar(62) NOT NULL,
   `Price` mediumint(9) NOT NULL,
   `Image` varchar(40) NOT NULL,
   `Short Description` varchar(255) NOT NULL,
-  `Long Description` varchar(500) NOT NULL
+  `Long Description` varchar(500) NOT NULL,
+  `Category` varchar(62) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `Products`
 --
 
-INSERT INTO `Products` (`ID`, `Name`, `Price`, `Image`, `Short Description`, `Long Description`) VALUES
-(1, 'Shake Weight', 3000, 'https://bit.ly/2JtVNE6', 'Dynamic Inertia technology ignites muscles in arms, shoulders, and chest.', 'The Shake Weight is the revolutionary new way to work out the muscles in your upper body-biceps, triceps, shoulders and chest using Dynamic Inertia. Its distinct motion makes the Shake Weight the first product of its kind specifically designed to help women achieve firm, toned and sculpted arms in one simple workout!'),
-(2, 'ShamWow', 2600, 'https://bit.ly/2w9C3Nm', 'It\'s like a chamois, towel, and sponge, all in one! Soaks up to 10x it\'s weight in any liquid!', 'ShamWow is perfect for any situation. It is like a chamois, a towel, and a sponge all in one. This amazing cleaning cloth sensation has been sweeping the nation. You can use ShamWow to clean, dry, or polish every surface imaginable.'),
-(3, 'Snuggie', 2900, 'https://bit.ly/2LVHYAk', 'Super-Soft Fleece with pockets! One Size fits all Adults! Keeps you Warm & Your Hands-Free!', 'Snuggie blankets is the amazing blanket with sleeves that will keep you warm and cozy all winter long.  You can lower your heating bill and keep your hands free while you snuggle your baby, talk on the phone, read a book or use your laptop. Wear a Snuggie blanket for your next outdoor event, or use it to keep warm around the house while you save money all year round.'),
-(4, 'Wax Vac', 1000, 'https://bit.ly/2EjCU2a', 'Gentle way to remove ear wax. Safe and hygienic. Reduces the risk of painful infections.', 'WaxVac ear cleaner is the safe and effective way to clean and dry your ears! The WaxVac secret is safe and gentle suction. Simply attach the Wax Vac silicone tip and insert in ear. Say \"Goodbye\" to cotton swabs with WaxVac ear cleaner!'),
-(5, 'Ostrich Pillow', 9900, 'https://bit.ly/2VD80b8', 'Create your own snugly space in the world and feel-good anywhere with the ultimate cocoon pillow.', 'OSTRICH PILLOW is a revolutionary new product to enable easy power naps anytime, everywhere. OSTRICH PILLOW\'S unique design offers a micro environment in which to take a cozy and comfortable power nap at ease. It has been designed to allow you to create a little private space within a public one, to relax and unwind.'),
-(6, 'Tater Mitts', 1000, 'https://bit.ly/2w9EmzO', '8 Seconds is All You Need with Tater Mitts! Quickly and easily prepare all your favorite potato dishes with Tater Mitts.', 'Peels the thinnest layer of potato skin. Tater Mitts are the new kitchen gloves that combine comfort and innovation to bring you the ultimate potato peeling process. 8 seconds is all you need to peel one potato effortlessly without getting your hands wet, nicked or cut.');
+INSERT INTO `Products` (`ID`, `Name`, `Price`, `Image`, `Short Description`, `Long Description`, `Category`) VALUES
+(1, 'Off Shoulder Crop Top', 1100, 'images/offshoulder1.jpg', 'Look chic and flirty with this crop top, perfect for any occasion.', '	Look chic and flirty with this crop top. It features an off-shoulder top, short sleeves, an overlapping design, and a single tone for versatility. This piece is perfect worn with high waist bottoms, be it a pair of jeans, shorts, or even a skirt.', 'Top'),
+(2, 'Balloon Sleeve Knit Top', 2300, 'images/balloontop1.jpg', 'Display a chic and cozy style during the fall and winter seasons.', '	Assemble a cozy chic style with this knit top. It has a V neck, balloon sleeves, and a cropped silhouette. Team it with your mini skirt and ankle boots for a nice fall appropriate attire.', 'Top'),
+(3, 'Cotton Straight Cut Pants', 2600, 'images/cottonpants1.jpg', 'Stay comfortable and casual with cotton bottoms.', 'Handy and casual, these pants will be a good canvas to build around your wardrobe. They have an elasticated waist, belt loops, a button and zip fly, pockets, and a straight cut. The solid tone makes these pants easy to mix and match with various casual and natty tops.', 'Bottom'),
+(4, 'Zip Front Sherpa Fleece Jacket', 3000, 'images/sherpa1.jpg', 'Warm up your look for the day during winter with this soft jacket.', '	Warm up your look for the day with this handy jacket. Made from sherpa fleece, this cover-up sports a spread collar, a zip front, pockets, long sleeves, and a loose silhouette. Wear it over your sweatshirt, then complete the look by teaming a pair of jeans and sneakers.', 'Outerwear'),
+(5, 'Mini H Line Skirt', 1900, 'images/hskirt1.jpg', 'Create a sophisticated ensemble with this mini skirt.', 'Ditch your usual skinnies with this mini skirt. It sports a high waist, belt loops, a button and zip fastening, pockets, plus an H line cut. The solid color makes it easy to mix and match with various tops and footwear.', 'Bottom'),
+(6, 'Embroidered Sweatshirt', 1800, 'images/peanuts1.jpg', 'Show a youthful side with an embroidery of an iconic comic character.', 'Decorated with an embroidery of an iconic comic character, this sweatshirt boasts a simple look that goes with most casual pieces. Ultra comfy with its loose fit, this pullover also features a round neck, dropped shoulders with long sleeves, and tapered cuffs plus hem. Wear this sweatshirt with your jeans for the weekend.', 'Outerwear'),
+(7, 'Loose Fit Check Shirt', 1500, 'images/checkshirt1.jpg', 'Sport a classic style with this wardrobe staple.', 'A check shirt in a classic button up style is a must have for every wardrobe. This shirt comes with a spread collar, a chest pocket, and a baggy fit for a laidback appeal. Pair this long sleeved piece with your favorite jeans or layer it over a tshirt for a casual look.', 'Top'),
+(8, 'High Waist Wide Leg Pants', 1000, 'images/widepants1.jpg', 'Stay breezy and effortless with these solid color pants.', 'Be comfortable whenever you don these solid tone pants. They come with a high waist, a loose fit, and an ankle-length construction. Tuck in a casual or natty top, then finish the look with your fave shoes.', 'Bottom');
 
 --
 -- Indexes for dumped tables
@@ -147,6 +165,12 @@ ALTER TABLE `Images`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `Orders`
+--
+ALTER TABLE `Orders`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `Products`
 --
 ALTER TABLE `Products`
@@ -160,22 +184,27 @@ ALTER TABLE `Products`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `cartItems`
 --
 ALTER TABLE `cartItems`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `Images`
 --
 ALTER TABLE `Images`
-  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+--
+-- AUTO_INCREMENT for table `Orders`
+--
+ALTER TABLE `Orders`
+  MODIFY `id` tinyint(6) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `Products`
 --
 ALTER TABLE `Products`
-  MODIFY `ID` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

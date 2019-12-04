@@ -4,10 +4,12 @@ class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: {}
+      product: {},
+      quantity: 1
     };
     this.params = this.props.params;
     this.switchView = this.switchView.bind(this);
+    this.handleQuantityChange = this.handleQuantityChange.bind(this);
   }
 
   componentDidMount() {
@@ -22,6 +24,12 @@ class ProductDetails extends React.Component {
     this.props.setView('catalog', {});
   }
 
+  handleQuantityChange(event) {
+    this.setState({
+      quantity: event.target.value
+    });
+  }
+
   render() {
     if (this.state.product) {
       let productName = this.state.product.Name;
@@ -32,6 +40,7 @@ class ProductDetails extends React.Component {
         var productImage2 = this.state.product['images'][2];
       }
       let productLong = this.state.product['Long Description'];
+      let productQuantity = this.state.quantity;
       let productToAdd = {
         'Long Description': productLong,
         'Name': productName,
@@ -39,7 +48,7 @@ class ProductDetails extends React.Component {
         'Short Description': this.state.product['Short Description'],
         'id': this.state.product.id,
         'Image': productImage1,
-        'count': 1
+        'count': productQuantity
       };
       return (
       <>
@@ -59,6 +68,12 @@ class ProductDetails extends React.Component {
           <span>*One Size.</span>
           <p className="product-title">Product Description:</p>
           <p className="product-long">{productLong}</p>
+          <span>Select Item Quantity: </span>
+          <select className="custom-select quantity" onChange={this.handleQuantityChange} defaultValue="1">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
           <button type="button" onClick={() => this.props.addToCart(productToAdd)} className="btn align-self-start add-cart">Add To Cart</button>
         </div>
       </div>

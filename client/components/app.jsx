@@ -1,5 +1,4 @@
 import React from 'react';
-import { Switch, Route, withRouter } from 'react-router-dom';
 import ProductList from './product-list';
 import Header from './header';
 import NavBar from './navbar';
@@ -107,6 +106,30 @@ class App extends React.Component {
     } else {
       cartCount = 0;
     }
+    let tops;
+    if (this.state.view.name === 'tops') {
+      tops = <Tops setView={this.setView} />;
+    } else {
+      tops = null;
+    }
+    let outerwear;
+    if (this.state.view.name === 'outerwear') {
+      outerwear = <Outerwear setView={this.setView} />;
+    } else {
+      outerwear = null;
+    }
+    let bottoms;
+    if (this.state.view.name === 'bottoms') {
+      bottoms = <Bottoms setView={this.setView} />;
+    } else {
+      bottoms = null;
+    }
+    let accessories;
+    if (this.state.view.name === 'accessories') {
+      accessories = <Accessories setView={this.setView} />;
+    } else {
+      accessories = null;
+    }
     return (
       <>
       <Header cartItemCount={cartCount} setView={this.setView} params={this.state.view.params}/>
@@ -114,25 +137,13 @@ class App extends React.Component {
       {product}
       {cartSummary}
       {checkoutForm}
-      <div>
-        <Switch>
-          <Route path="/tops">
-            <Tops />
-          </Route>
-          <Route path="/outerwear">
-            <Outerwear />
-          </Route>
-          <Route path="/bottoms">
-            <Bottoms />
-          </Route>
-          <Route path="/accessories">
-            <Accessories />
-          </Route>
-        </Switch>
-      </div>
+      {tops}
+      {outerwear}
+      {bottoms}
+      {accessories}
       </>
     );
   }
 }
 
-export default withRouter(App);
+export default App;

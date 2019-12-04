@@ -29,12 +29,13 @@ class CartSummary extends React.Component {
   deleteItem(itemID) {
     let copy = this.state.cartItems.filter(item => {
       const copyItems = Object.assign({}, item);
-      if (copyItems['ID'] === itemID) {
+      if (Number.parseInt(copyItems['ID']) === itemID) {
         return false;
       }
       return true;
     });
-    fetch('/api/cart_delete.php', { method: 'DELETE', body: JSON.stringify(itemID), headers: { 'Content-Type': 'application/json' } })
+    fetch('/api/cart_delete.php', { method: 'POST', body: JSON.stringify(itemID), headers: { 'Content-Type': 'application/json' } })
+      .then(res => res.json())
       .then(this.setState({ cartItems: copy }))
       .catch(err => { console.error('There was an error:', err); });
   }

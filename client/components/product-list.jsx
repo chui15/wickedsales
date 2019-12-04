@@ -8,7 +8,6 @@ class ProductList extends React.Component {
       products: []
     };
     this.getProducts = this.getProducts.bind(this);
-    this.setView = props.setView;
   }
 
   getProducts() {
@@ -29,7 +28,7 @@ class ProductList extends React.Component {
       this.state.products.map(product => {
         return (
           <ProductListItem key={product.id}
-            product={product} setView={this.setView}/>
+            product={product} setView={this.props.setView}/>
         );
       })
     );

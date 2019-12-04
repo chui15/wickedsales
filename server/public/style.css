@@ -292,3 +292,10 @@ header {
   margin-top: 10%;
   left: 50%;
 }
+
+.quantity {
+  border: 1px solid #BA7BA1;
+  width: 60%;
+  display: block;
+  margin-top: 10px;
+}

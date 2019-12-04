@@ -20,6 +20,7 @@
     ]
   },
   "dependencies": {
+    "popper.js": "1.16.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-router-dom": "5.1.2"

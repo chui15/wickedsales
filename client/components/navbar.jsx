@@ -1,16 +1,38 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 class NavBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.getTops = this.getTops.bind(this);
+    this.getOuterwear = this.getOuterwear.bind(this);
+    this.getBottoms = this.getBottoms.bind(this);
+    this.getAccessories = this.getAccessories.bind(this);
+  }
+
+  getTops() {
+    this.props.setView('tops', {});
+  }
+
+  getOuterwear() {
+    this.props.setView('outerwear', {});
+  }
+
+  getBottoms() {
+    this.props.setView('bottoms', {});
+  }
+
+  getAccessories() {
+    this.props.setView('accessories', {});
+  }
 
   render() {
     return (
       <div className="row nav-bar">
         <div className="col align-items-start">
-          <Link to="/tops" className="nav-link">Tops</Link>
-          <Link to="/outerwear" className="nav-link">Outerwear</Link>
-          <Link to="/bottoms" className="nav-link">Bottoms</Link>
-          <Link to="/accessories" className="nav-link">Accessories</Link>
+          <h5 className="nav-link" onClick={this.getTops}>Tops</h5>
+          <h5 className="nav-link" onClick={this.getOuterwear}>Outerwear</h5>
+          <h5 className="nav-link" onClick={this.getBottoms}>Bottoms</h5>
+          <h5 className="nav-link" onClick={this.getAccessories}>Accessories</h5>
         </div>
       </div>
     );

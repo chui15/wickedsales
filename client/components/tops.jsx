@@ -29,12 +29,11 @@ class Tops extends React.Component {
     return (
       this.state.products.map(product => {
         return (
-          <ProductListItem key={product.id} product={product} setView={this.setView} />
+          <ProductListItem key={product.id} product={product} setView={this.props.setView} />
         );
       })
     );
   }
-
 }
 
 export default Tops;
