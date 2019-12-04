@@ -64,8 +64,10 @@ if(!$cartID){
   $_SESSION['cartId'] = mysqli_insert_id($conn);
 }
 
-$cartItemsQuery = "INSERT INTO `cartItems` SET count=1, `productID`=$id, `price`= {$productData['Price']}, `added`= NOW(), `cartID` = $cartID
-      ON DUPLICATE KEY UPDATE count = count+ 1";
+$quantity = intval($bodyData['count']);
+
+$cartItemsQuery = "INSERT INTO `cartItems` SET count = {$quantity}, `productID`=$id, `price`= {$productData['Price']}, `added`= NOW(), `cartID` = $cartID
+      ON DUPLICATE KEY UPDATE count = count + 1";
 
 $cartItemResult = mysqli_query($conn, $cartItemsQuery);
 
@@ -86,5 +88,7 @@ $commitResult = mysqli_query($conn, $commitQuery);
 if(!$commitResult){
   throw new Exception('Commit query not valid ' . mysqli_error($conn));
 }
+
+print(json_encode($productData));
 
 ?>
