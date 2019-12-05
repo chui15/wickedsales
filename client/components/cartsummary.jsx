@@ -78,13 +78,15 @@ class CartSummary extends React.Component {
         <div className="row">
           <h2 className="cart-title">My Cart</h2>
         </div>
-        <div>{cartItem}</div>
-        <div className="row">
-          <h3 className="col-4 ml-5 item-total align-self-center">Item Total: {'$' + totalPriceRounded + '.00'}</h3>
-          <span className="col-md-4 align-self-end ml-5">
-            <button type="button" className="btn checkout" onClick={this.getCheckout}>Checkout</button>
-          </span>
+        <div className="cart-container">
+          <div className="cart-item">{cartItem}</div>
         </div>
+          <div className="row">
+            <h3 className="col-md-9 ml-5 item-total align-self-center">Item Total: {'$' + totalPriceRounded + '.00'}</h3>
+            <span className="col-md-2 align-self-end">
+              <button type="button" className="btn checkout" onClick={this.getCheckout}>Checkout</button>
+            </span>
+          </div>
         </>
       );
     }

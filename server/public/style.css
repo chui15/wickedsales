@@ -45,7 +45,7 @@ header {
   margin-top: 2px;
   border-bottom: 1px solid darkgray;
   box-shadow: 0px 1px rgb(211, 211, 211);
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .nav-link {
@@ -102,6 +102,14 @@ header {
   cursor: pointer;
 }
 
+.cart-item {
+  margin-bottom: 5px;
+}
+
+.item-title {
+  margin-top: 10px;
+}
+
 .item-image {
   height: 250px;
   width: 260px;
@@ -116,9 +124,10 @@ header {
 }
 
 .item-total{
-  padding-top: 50px;
+  padding-top: 30px;
   font-weight: bold;
   color: #BA7BA1;
+  margin-left: 10%;
 }
 
 .product-title {
@@ -138,8 +147,8 @@ header {
 }
 
 .product-details-name {
-  margin-top: 20%;
-  font-size: 35px;
+  margin-top: 10px;
+  font-size: 30px;
   padding-top: 50px;
   margin-bottom: 10px;
 }
@@ -152,10 +161,15 @@ header {
   margin-bottom: 10px;
 }
 
-.product-details-image {
-  width: 290px;
-  height: 290px;
-  padding: 25px;
+.product-details-image1, .product-details-image2 {
+  width: 280px;
+  height: 280px;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.product-details-image2 {
+  margin-top: 0px;
 }
 
 .price {
@@ -177,6 +191,7 @@ header {
   display: block;
   margin-left: 0px;
   margin-top: 15px;
+  margin-bottom: 15px;
   background-color: #BA7BA1;
   color: white;
 }
@@ -192,12 +207,13 @@ header {
 }
 
 .returnCatalog {
-  font-size: 20px;
+  font-size: 17px;
   margin-left: 5%;
   border: 1px solid rgb(199, 199, 199);
   border-radius: 5px;
   padding: 5px;
   box-shadow: 1px 1px 1px lightgray;
+  margin-top: 15px;
 }
 
 .returnCatalog:hover {
@@ -212,6 +228,15 @@ header {
 
 .empty-cart {
   margin-top: 20px;
+}
+
+.cart-container {
+  border: 1px solid rgb(199, 199, 199);
+  border-radius: 3px;
+  padding: 15px;
+  box-shadow: 1px 1px 1px lightgray;
+  width: 85%;
+  margin-left: 4%;
 }
 
 .cart-title {
@@ -232,11 +257,17 @@ header {
   color: red;
 }
 
-.checkout {
-  padding: 12px;
+.checkout, .place-order {
+  padding: 10px;
   background-color: #BA7BA1;
   color: white;
   margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.place-order {
+  margin-left: 60.5%;
+  margin-top: 0px;
 }
 
 .checkout:hover {
@@ -251,7 +282,8 @@ header {
 }
 
 .form-container {
-  padding: 30px;
+  padding: 20px;
+  width: 60%;
 }
 
 .credit-card-name, .shipping-name {
@@ -295,7 +327,20 @@ header {
 
 .quantity {
   border: 1px solid #BA7BA1;
-  width: 60%;
+  width: 50%;
   display: block;
+  margin-top: 10px;
+}
+
+.cart-summary-container {
+  height: 20%;
+  border: 1px solid rgb(199, 199, 199);
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 1px 1px 1px lightgray;
+}
+
+.order-item-title {
+  font-size: 18px;
   margin-top: 10px;
 }

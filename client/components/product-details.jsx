@@ -56,13 +56,13 @@ class ProductDetails extends React.Component {
         <span className="returnCatalog" onClick={this.switchView}> &#8592; Home</span>
       </div>
       <div className="single-product row">
-        <div className="col-5">
+        <div className="col-5 col-md-5">
           <span>
-            <img src={productImage1} className="product-details-image"></img>
-            <img src={productImage2} className="product-details-image"></img>
+            <img src={productImage1} className="product-details-image1"></img>
+            <img src={productImage2} className="product-details-image2"></img>
           </span>
         </div>
-        <div className="col-7 align-self-center">
+        <div className="col-8 col-md-6 ml-5 align-self-center">
           <span className="product-details-name">{productName}</span>
           <span className="product-price">{'$' + priceRounded + '.00'}</span>
           <span>*One Size.</span>
