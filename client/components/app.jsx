@@ -9,6 +9,7 @@ import Tops from './tops';
 import Outerwear from './outerwear';
 import Bottoms from './bottoms';
 import Accessories from './accessories';
+import InitialModal from './initial-modal';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,7 +19,8 @@ class App extends React.Component {
         name: 'catalog',
         params: {}
       },
-      cart: []
+      cart: [],
+      initialModal: true
     };
     this.setView = this.setView.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
@@ -70,7 +72,7 @@ class App extends React.Component {
       .then(() => {
         setTimeout(() => {
           this.setView('catalog', {});
-        }, 5000);
+        }, 4500);
       })
       .catch(err => console.error(err));
   }
@@ -130,10 +132,17 @@ class App extends React.Component {
     } else {
       accessories = null;
     }
+    let initialModal;
+    if (this.state.initialModal === true) {
+      initialModal = <InitialModal showModal={this.state.initialModal}/>;
+    } else {
+      initialModal = null;
+    }
     return (
       <>
-      <Header cartItemCount={cartCount} setView={this.setView} params={this.state.view.params}/>
-      <NavBar setView={this.setView} params={this.state.view.params}/>
+      {initialModal}
+      <Header cartItemCount={cartCount} setView={this.setView} params={this.state.view.params} />
+      <NavBar setView={this.setView} params={this.state.view.params} />
       {product}
       {cartSummary}
       {checkoutForm}

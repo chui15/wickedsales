@@ -3,6 +3,12 @@ import React from 'react';
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      topsClicked: false,
+      outerwearClicked: false,
+      bottomsClicked: false,
+      accessoriesClicked: false
+    };
     this.getTops = this.getTops.bind(this);
     this.getOuterwear = this.getOuterwear.bind(this);
     this.getBottoms = this.getBottoms.bind(this);

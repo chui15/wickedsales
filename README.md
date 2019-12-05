@@ -2,6 +2,10 @@
 
 A full stack LAMP & React shopping cart app made for desktop browsers.
 
+## Disclaimer
+
+This app is only a DEMO, there are no actual transactions being made and no personal information is used and/or being compromised.
+
 ## Technologies Used
 
 - React.js

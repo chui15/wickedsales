@@ -9,6 +9,7 @@ class ProductDetails extends React.Component {
     };
     this.params = this.props.params;
     this.switchView = this.switchView.bind(this);
+    this.switchCart = this.switchCart.bind(this);
     this.handleQuantityChange = this.handleQuantityChange.bind(this);
   }
 
@@ -22,6 +23,10 @@ class ProductDetails extends React.Component {
 
   switchView() {
     this.props.setView('catalog', {});
+  }
+
+  switchCart() {
+    this.props.setView('cart', {});
   }
 
   handleQuantityChange(event) {

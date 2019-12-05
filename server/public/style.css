@@ -24,6 +24,61 @@ header {
   box-shadow: 0px 2px rgb(211, 211, 211);
 }
 
+.initial-modal-back {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.7);
+}
+
+.initial-modal-content {
+    background-color: white;
+    width: 60%;
+    height: 60vh;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px gray;
+    border: 2px solid rgb(146, 144, 144);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.initial-modal-title {
+  font-size: 40px;
+  color: #BA7BA1;
+  font-weight: bolder;
+}
+
+.modal-button {
+  background-color: #BA7BA1;
+  color: white;
+  margin-left: 42%;
+  padding: 10px;
+}
+
+.start-modal {
+  background-color: #F9E7E7;
+  border-bottom: 1px solid darkgray;
+}
+
+.modal-disclaimer {
+  margin: 5%;
+  vertical-align: center;
+  font-size: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
 .header-title, .header-definition {
   font-family: 'Quicksand', sans-serif;
   font-style: italic;
@@ -48,12 +103,20 @@ header {
   margin-bottom: 15px;
 }
 
-.nav-link {
+.nav-link, .nav-clicked {
   display: inline-block;
   font-family: 'Quicksand', sans-serif;
   font-weight: bold;
   margin-left: 25px;
   color: black;
+}
+
+.nav-clicked {
+  color: #BA7BA1;
+}
+
+.nav-clicked:hover {
+  cursor: pointer;
 }
 
 .nav-link:hover {
@@ -146,6 +209,10 @@ header {
   font-weight: bolder;
 }
 
+.product-name:hover {
+  cursor: pointer;
+}
+
 .product-details-name {
   margin-top: 10px;
   font-size: 30px;
@@ -214,6 +281,7 @@ header {
   padding: 5px;
   box-shadow: 1px 1px 1px lightgray;
   margin-top: 15px;
+  margin-bottom: 20px;
 }
 
 .returnCatalog:hover {
@@ -266,8 +334,11 @@ header {
 }
 
 .place-order {
-  margin-left: 60.5%;
-  margin-top: 0px;
+  margin-left: 2%;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  height: 70%;
+  padding: 8px;
 }
 
 .checkout:hover {
@@ -286,6 +357,10 @@ header {
   width: 60%;
 }
 
+.credit-card {
+  margin-top: 0px;
+}
+
 .credit-card-name, .shipping-name {
   margin-top: 20px;
 }
@@ -297,6 +372,7 @@ header {
 .field-check {
   font-size: 15px;
   color: red;
+  display: inline-block;
 }
 
 .transaction-modal {
@@ -333,7 +409,7 @@ header {
 }
 
 .cart-summary-container {
-  height: 20%;
+  height: 100%;
   border: 1px solid rgb(199, 199, 199);
   border-radius: 5px;
   padding: 15px;
@@ -341,6 +417,20 @@ header {
 }
 
 .order-item-title {
-  font-size: 18px;
+  font-size: 15px;
   margin-top: 10px;
+}
+
+.disclaimer {
+  color: red;
+}
+
+.order-item-price, .order-item-count {
+  color: #BA7BA1;
+  display: block;
+  text-align: left;
+  font-size: 12px;
+  font-weight: bold;
+  padding-bottom: 5px;
+  margin-top: 5px;
 }
