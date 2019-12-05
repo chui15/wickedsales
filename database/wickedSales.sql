@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 04, 2019 at 05:53 AM
+-- Generation Time: Dec 05, 2019 at 01:22 AM
 -- Server version: 5.7.27-0ubuntu0.18.04.1
 -- PHP Version: 7.2.19-0ubuntu0.18.04.2
 
@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `cart`
 --
 
+DROP TABLE IF EXISTS `cart`;
 CREATE TABLE `cart` (
   `id` mediumint(8) UNSIGNED NOT NULL,
   `created` datetime NOT NULL
@@ -45,6 +46,7 @@ INSERT INTO `cart` (`id`, `created`) VALUES
 -- Table structure for table `cartItems`
 --
 
+DROP TABLE IF EXISTS `cartItems`;
 CREATE TABLE `cartItems` (
   `id` mediumint(8) UNSIGNED NOT NULL,
   `productID` mediumint(8) UNSIGNED NOT NULL,
@@ -55,12 +57,21 @@ CREATE TABLE `cartItems` (
   `cartID` mediumint(8) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `cartItems`
+--
+
+INSERT INTO `cartItems` (`id`, `productID`, `count`, `price`, `added`, `updated`, `cartID`) VALUES
+(2, 2, 1, 2300, '2019-12-04 22:30:57', '2019-12-04 22:30:57', 2),
+(4, 15, 1, 1500, '2019-12-05 00:42:25', '2019-12-05 00:42:25', 2);
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `Images`
 --
 
+DROP TABLE IF EXISTS `Images`;
 CREATE TABLE `Images` (
   `id` tinyint(4) NOT NULL,
   `url` varchar(255) NOT NULL,
@@ -175,6 +186,7 @@ INSERT INTO `Images` (`id`, `url`, `product_id`) VALUES
 -- Table structure for table `Orders`
 --
 
+DROP TABLE IF EXISTS `Orders`;
 CREATE TABLE `Orders` (
   `id` tinyint(6) NOT NULL,
   `Name` varchar(62) NOT NULL,
@@ -196,6 +208,7 @@ INSERT INTO `Orders` (`id`, `Name`, `Address`, `creditCard`, `cartID`) VALUES
 -- Table structure for table `Products`
 --
 
+DROP TABLE IF EXISTS `Products`;
 CREATE TABLE `Products` (
   `ID` smallint(5) UNSIGNED NOT NULL,
   `Name` varchar(62) NOT NULL,
@@ -242,7 +255,7 @@ INSERT INTO `Products` (`ID`, `Name`, `Price`, `Image`, `Short Description`, `Lo
 (29, 'V Neck Loose Button Up Cardigan', 2500, 'images/loosecardigan1.jpg', 'Add a cozy detail to your basic looks.', 'Add a cozy detail to your basic looks with this loose fitting cardigan. It comes with a V neckline, a button up front, dropped shoulders with extended sleeves, and ribbed cuffs. You can wear this with your frilly dresses or layer it over your tops.', 'Outerwear'),
 (30, 'Pendant Necklace Set', 700, 'images/necklaceset1.jpg', 'Pair this necklace set with casual wear for a sophisticated style.', 'Give your neck a sophisticated advantage with this two piece necklace set! The longer necklace has a heart pendant while the short one has a triple hoop pendant strung through it. This set is best with casual wear.', 'Accessories'),
 (31, 'Button Front V Neck Cardigan', 2200, 'images/buttoncardigan1.jpg', 'Layer up easily when you have this cardigan on hand.', 'Layer up easily when you have this cardigan on hand. It has a classic V neck, a button up front, long sleeves, and a regular fit. This piece is nice worn with either sleeved or sleeveless tops.', 'Outerwear'),
-(32, 'Square Buckled Faux Leather Belt', 900, 'images/squarebelt1.jpg', 'Pair this versatile belt with your dresses, loose blouses, pants, and skirts.', 'This buckled belt is a must have accessory. With a classic, glossy square buckle and a supple strap to wrap around the waist, this belt can work well with your dresses, loose blouses, pants, and skirts.', 'Accessories');
+(32, 'Square Buckled Faux Leather Belt', 900, 'images/squarebelt1.jpg', 'Pair this versatile belt with your dresses, blouses, or pants.', 'This buckled belt is a must have accessory. With a classic, glossy square buckle and a supple strap to wrap around the waist, this belt can work well with your dresses, loose blouses, pants, and skirts.', 'Accessories');
 
 --
 -- Indexes for dumped tables
@@ -292,7 +305,7 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT for table `cartItems`
 --
 ALTER TABLE `cartItems`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `Images`
 --
