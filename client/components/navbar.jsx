@@ -29,10 +29,10 @@ class NavBar extends React.Component {
     return (
       <div className="row nav-bar">
         <div className="col align-items-start">
-          <h5 className="nav-link" onClick={this.getTops}>Tops</h5>
-          <h5 className="nav-link" onClick={this.getOuterwear}>Outerwear</h5>
-          <h5 className="nav-link" onClick={this.getBottoms}>Bottoms</h5>
-          <h5 className="nav-link" onClick={this.getAccessories}>Accessories</h5>
+          <h6 className="nav-link" onClick={this.getTops}>Tops</h6>
+          <h6 className="nav-link" onClick={this.getOuterwear}>Outerwear</h6>
+          <h6 className="nav-link" onClick={this.getBottoms}>Bottoms</h6>
+          <h6 className="nav-link" onClick={this.getAccessories}>Accessories</h6>
         </div>
       </div>
     );
