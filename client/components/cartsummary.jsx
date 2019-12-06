@@ -72,7 +72,7 @@ class CartSummary extends React.Component {
       });
       return (
         <>
-        <div className="col-sm-4">
+        <div className="col-sm-4 back">
           <span className="returnCatalog" onClick={this.switchView}> &#8592; Back To Catalog</span>
         </div>
         <div className="row">

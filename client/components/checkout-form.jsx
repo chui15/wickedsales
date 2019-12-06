@@ -65,15 +65,15 @@ class CheckoutForm extends React.Component {
         });
       }, 3000);
     } else {
-      const regexName = /.{5,}/;
-      const regexCard = /\b(?:3[47]\d|(?:4\d|5[1-5]|65)\d{2}|6011)\d{12}\b/;
+      const regexName = /.{6,}/;
+      const regexCard = /\b(?:3[47]\d|(?: 4\d|5[1 - 5]|65)\d{2}|6011)\d{12}\b/;
       const regexAddress = /.{10,}/;
       let trimmedName = this.state.name.trim();
       let trimmedCard = this.state.creditCard.trim();
       let trimmedAddress = this.state.shippingAddress.trim();
       if (!regexName.test(trimmedName) && trimmedName !== '') {
         this.setState({
-          nameCheck: 'Must have a valid name.'
+          nameCheck: 'Must have a valid name (at least 6 characters).'
         });
         setTimeout(() => {
           this.setState({
@@ -81,7 +81,7 @@ class CheckoutForm extends React.Component {
           });
         }, 3000);
       }
-      if (!regexCard.test(trimmedCard) && !regexName.test(trimmedCard) && trimmedCard !== '') {
+      if (!regexCard.test(trimmedCard) || !regexName.test(trimmedCard) || trimmedCard !== '') {
         this.setState({
           creditCardCheck: 'Must enter a 16 digit card number (numeric values only).'
         });
@@ -146,7 +146,7 @@ class CheckoutForm extends React.Component {
     });
     return (
       <>
-      <div className="col-sm-4">
+      <div className="col-sm-4 back">
         <span className="returnCatalog" onClick={this.switchCart}> &#8592; Return to Cart</span>
       </div>
       <div>

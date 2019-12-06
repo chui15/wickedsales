@@ -110,6 +110,7 @@ header {
 
 .nav-link, .nav-clicked {
   display: inline-block;
+  font-size: 18px;
   font-family: 'Quicksand', sans-serif;
   font-weight: bold;
   margin-left: 25px;
@@ -310,8 +311,10 @@ header {
   border-radius: 5px;
   padding: 5px;
   box-shadow: 1px 1px 1px lightgray;
-  margin-top: 15px;
-  margin-bottom: 20px;
+}
+
+.back {
+  margin-top: 2%;
 }
 
 .returnCatalog:hover {

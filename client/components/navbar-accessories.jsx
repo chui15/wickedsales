@@ -1,6 +1,6 @@
 import React from 'react';
 
-class NavBar extends React.Component {
+class NavBarAccessories extends React.Component {
   constructor(props) {
     super(props);
     this.getTops = this.getTops.bind(this);
@@ -32,11 +32,11 @@ class NavBar extends React.Component {
           <div className="nav-link" onClick={this.getTops}>Tops</div>
           <div className="nav-link" onClick={this.getOuterwear}>Outerwear</div>
           <div className="nav-link" onClick={this.getBottoms}>Bottoms</div>
-          <div className="nav-link" onClick={this.getAccessories}>Accessories</div>
+          <div className="nav-clicked" onClick={this.getAccessories}>Accessories</div>
         </div>
       </div>
     );
   }
 }
 
-export default NavBar;
+export default NavBarAccessories;

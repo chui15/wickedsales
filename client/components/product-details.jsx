@@ -72,9 +72,9 @@ class ProductDetails extends React.Component {
       };
       return (
       <>
-      <div className="col-sm-4">
-        <span className="returnCatalog" onClick={this.switchView}> &#8592; Home</span>
-      </div>
+        <div className="col-md-8 back">
+          <span className="returnCatalog" onClick={this.switchView}> &#8592; Home</span>
+        </div>
       <div className="single-product row">
         <div className="col-5 col-md-5">
           <span>
