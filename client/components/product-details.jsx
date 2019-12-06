@@ -1,15 +1,19 @@
 import React from 'react';
+import AddModal from './add-modal';
 
 class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       product: {},
-      quantity: 1
+      quantity: 1,
+      addClicked: false
     };
     this.params = this.props.params;
     this.switchView = this.switchView.bind(this);
+    this.switchCart = this.switchCart.bind(this);
     this.handleQuantityChange = this.handleQuantityChange.bind(this);
+    this.handleAdd = this.handleAdd.bind(this);
   }
 
   componentDidMount() {
@@ -24,13 +28,29 @@ class ProductDetails extends React.Component {
     this.props.setView('catalog', {});
   }
 
+  switchCart() {
+    this.props.setView('cart', {});
+  }
+
   handleQuantityChange(event) {
     this.setState({
       quantity: event.target.value
     });
   }
 
+  handleAdd() {
+    this.setState({
+      addClicked: true
+    });
+  }
+
   render() {
+    let addModal;
+    if (this.state.addClicked) {
+      addModal = <AddModal showModal={this.state.addClicked} setView={this.props.setView}/>;
+    } else {
+      addModal = null;
+    }
     if (this.state.product) {
       let productName = this.state.product.Name;
       let productPrice = Number.parseInt(this.state.product.Price);
@@ -74,9 +94,10 @@ class ProductDetails extends React.Component {
             <option value="2">2</option>
             <option value="3">3</option>
           </select>
-          <button type="button" onClick={() => this.props.addToCart(productToAdd)} className="btn align-self-start add-cart">Add To Cart</button>
+          <button type="button" onClick={() => { this.handleAdd(); this.props.addToCart(productToAdd); }} className="btn align-self-start add-cart">Add To Cart</button>
         </div>
       </div>
+      {addModal}
       </>
       );
     }

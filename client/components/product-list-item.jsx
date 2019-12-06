@@ -19,7 +19,7 @@ class ProductListItem extends React.Component {
           <img src={this.props.product.images[0]} className="product-image" onClick={this.getDetails}></img>
         </span>
         <div className="product-info">
-          <span className="product-name">{this.props.product.Name}</span>
+          <span className="product-name" onClick={this.getDetails}>{this.props.product.Name}</span>
           <span className="price">{'$' + priceRounded + '.00'}</span>
           <span className="product-description">{this.props.product['Short Description']}</span>
         </div>
