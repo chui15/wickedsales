@@ -65,8 +65,8 @@ class CheckoutForm extends React.Component {
         });
       }, 3000);
     } else {
-      const regexName = /.{4,}/;
-      const regexCard = /^[0-9]*$/;
+      const regexName = /.{5,}/;
+      const regexCard = /\b(?:3[47]\d|(?:4\d|5[1-5]|65)\d{2}|6011)\d{12}\b/;
       const regexAddress = /.{10,}/;
       let trimmedName = this.state.name.trim();
       let trimmedCard = this.state.creditCard.trim();
@@ -81,7 +81,7 @@ class CheckoutForm extends React.Component {
           });
         }, 3000);
       }
-      if (!regexCard.test(trimmedCard) && trimmedCard !== '') {
+      if (!regexCard.test(trimmedCard) && !regexName.test(trimmedCard) && trimmedCard !== '') {
         this.setState({
           creditCardCheck: 'Must enter a 16 digit card number (numeric values only).'
         });
@@ -151,7 +151,7 @@ class CheckoutForm extends React.Component {
       </div>
       <div>
         <h2 className="col ml-4">Checkout</h2>
-        <h6 className="col ml-4 disclaimer">*Please do NOT enter any real personal info! This application is for demo purposes ONLY.</h6>
+        <h6 className="col ml-4 disclaimer">*Please do NOT enter any real personal information! This form is for demo purposes ONLY.</h6>
       </div>
       <div className="row">
         <div className="form-container">

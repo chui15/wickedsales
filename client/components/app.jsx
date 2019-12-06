@@ -10,6 +10,7 @@ import Outerwear from './outerwear';
 import Bottoms from './bottoms';
 import Accessories from './accessories';
 import InitialModal from './initial-modal';
+import ScrollButton from './scrollbutton';
 
 class App extends React.Component {
   constructor(props) {
@@ -138,6 +139,12 @@ class App extends React.Component {
     } else {
       initialModal = null;
     }
+    let scrollButton;
+    if (this.state.view.name === 'catalog') {
+      scrollButton = <ScrollButton scrollStepInPx="50" delayInMs="16.66" />;
+    } else {
+      scrollButton = null;
+    }
     return (
       <>
       {initialModal}
@@ -150,6 +157,7 @@ class App extends React.Component {
       {outerwear}
       {bottoms}
       {accessories}
+      {scrollButton}
       </>
     );
   }
