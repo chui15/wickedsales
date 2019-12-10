@@ -54,7 +54,7 @@ class CartSummary extends React.Component {
     if (this.state.cartItems.length === 0) {
       return (
         <>
-        <div>
+        <div className="back">
           <span className="returnCatalog ml-3" onClick={this.switchView}> &#8592; Back To Catalog</span>
         </div>
         <div>
