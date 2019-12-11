@@ -92,14 +92,17 @@ class App extends React.Component {
   render() {
     let navBar;
     let product;
+    let homeBanner;
     if (this.state.view.name === 'catalog') {
       product = <ProductList setView={this.setView} />;
       navBar = <NavBar setView={this.setView} params={this.state.view.params} />;
+      homeBanner = <img src="images/home-banner.jpg" alt="" className="home-banner"/>;
     } else if (this.state.view.name === 'details') {
       product = <ProductDetails setView={this.setView} params={this.state.view.params} addToCart={this.addToCart}/>;
     } else {
       product = null;
       navBar = null;
+      homeBanner = null;
     }
     let cartSummary;
     if (this.state.view.name === 'cart') {
@@ -163,6 +166,7 @@ class App extends React.Component {
       <>
       {initialModal}
       <Header cartItemCount={cartCount} setView={this.setView} params={this.state.view.params} />
+      {homeBanner}
       {navBar}
       {product}
       {cartSummary}

@@ -41,6 +41,7 @@ class ProductDetails extends React.Component {
         quantity: event.target.value,
         quantityConfirm: 'Must enter a quantity greater than zero.'
       });
+      return null;
     } else {
       this.setState({
         quantity: event.target.value,

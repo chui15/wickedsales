@@ -91,11 +91,10 @@ class CartSummaryItem extends React.Component {
             </span>
           </div>
           <div className="col-xs-4 ml-5 align-self-center">
-            <h4 className="item-title">{this.props.item.Name}</h4>
+            <h5 className="item-title">{this.props.item.Name}</h5>
             <span className="price">{'$' + priceRounded + '.00'}</span>
             <span>Quantity: {editQuantity}</span>
             <span className="quantity-confirm">{this.state.quantityConfirm}</span>
-            <span>{this.props.item['Short Description']}</span>
             <span className="delete-cart" onClick={this.handleRemove}>&times; Remove from cart</span>
           </div>
         </div>

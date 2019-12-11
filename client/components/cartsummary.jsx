@@ -11,6 +11,7 @@ class CartSummary extends React.Component {
     this.getCheckout = this.getCheckout.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
+    this.calculateTotal = this.calculateTotal.bind(this);
   }
 
   componentDidMount() {
@@ -36,6 +37,19 @@ class CartSummary extends React.Component {
     this.props.setView('checkout', {});
   }
 
+  calculateTotal() {
+    let totalPrice = 0;
+    this.state.cartItems.map(item => {
+      if (parseInt(item['count']) === 1) {
+        totalPrice += parseFloat(item.Price);
+      } else {
+        totalPrice += (parseFloat(item.Price) * parseInt(item['count']));
+      }
+    });
+    let totalPriceRounded = totalPrice.toFixed(2) / Math.pow(10, 2);
+    return totalPriceRounded;
+  }
+
   deleteItem(itemID) {
     let copy = this.state.cartItems.filter(item => {
       const copyItems = Object.assign({}, item);
@@ -52,15 +66,7 @@ class CartSummary extends React.Component {
 
   render() {
     let initialPrice = (0).toFixed(2);
-    let totalPrice = 0;
-    this.state.cartItems.map(item => {
-      if (parseInt(item['count']) === 1) {
-        totalPrice += parseFloat(item.Price);
-      } else {
-        totalPrice += (parseFloat(item.Price) * parseInt(item['count']));
-      }
-    });
-    let totalPriceRounded = totalPrice.toFixed(2) / Math.pow(10, 2);
+    let total = this.calculateTotal();
     if (this.state.cartItems.length === 0) {
       return (
         <>
@@ -90,13 +96,13 @@ class CartSummary extends React.Component {
         </div>
         <div className="cart-container">
           <div className="cart-item">{cartItem}</div>
-        </div>
           <div className="row">
-            <h3 className="col-md-9 ml-5 item-total align-self-center">Item Total: {'$' + totalPriceRounded + '.00'}</h3>
+            <h3 className="col-md-9 ml-4 item-total align-self-center">Item Total: {'$' + total + '.00'}</h3>
             <span className="col-md-2 align-self-end">
               <button type="button" className="btn checkout" onClick={this.getCheckout}>Checkout</button>
             </span>
           </div>
+        </div>
         </>
       );
     }
