@@ -12,7 +12,7 @@ class RemoveModal extends React.Component {
   closeModal() {
     this.setState({
       showModal: false
-    });
+    }, () => this.props.handleCancel());
   }
 
   render() {

@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito|Quicksand');
 
+.products-container {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
 body {
   font-family: 'Nunito', sans-serif;
   overflow-x: hidden;
@@ -133,7 +138,7 @@ header {
 .square {
   float: left;
   position: relative;
-  width: 280px;
+  width: 290px;
   height: 470px;
   margin: 1%;
   overflow: hidden;
@@ -265,7 +270,7 @@ header {
 .add-cart {
   display: block;
   margin-left: 0px;
-  margin-top: 15px;
+  margin-top: 10px;
   margin-bottom: 15px;
   background-color: #BA7BA1;
   color: white;
@@ -365,7 +370,7 @@ header {
   border-radius: 10px;
   box-shadow: 0px 0px 2px gray;
   border: 2px solid rgb(146, 144, 144);
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -467,9 +472,17 @@ header {
 
 .quantity {
   border: 1px solid #BA7BA1;
-  width: 100px;
+  width: 70px;
   display: block;
-  margin-top: 10px;
+  margin-top: 5px;
+}
+
+.quantity-confirm {
+  color: red;
+  font-size: 16px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
 }
 
 .cart-summary-container {
@@ -524,4 +537,32 @@ header {
   left: 47%;
   margin-top: -9px;
   margin-left: -5px;
+}
+
+@media only screen
+and (min-width : 768px)
+and (max-width : 1024px)
+and (orientation: landscape)  {
+
+  .square {
+    width: 260px;
+    height: 480px;
+  }
+
+  .products-container {
+    margin-left: 8%;
+  }
+
+  .initial-modal-content {
+  width: 60%;
+  height: 60vh;
+  }
+
+  .modal-button {
+    margin-left: 38%;
+  }
+
+  .shopping-cart {
+    margin-left: 0px;
+  }
 }

@@ -10,12 +10,22 @@ class CartSummary extends React.Component {
     this.switchView = this.switchView.bind(this);
     this.getCheckout = this.getCheckout.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
+    this.getCartItems = this.getCartItems.bind(this);
   }
 
   componentDidMount() {
-    this.setState({
-      cartItems: this.props.cartItems
-    });
+    this.getCartItems();
+  }
+
+  getCartItems() {
+    fetch('/api/cart.php')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          cartItems: this.state.cartItems.concat(data)
+        });
+      })
+      .catch(error => console.error('Fetch failed', error));
   }
 
   switchView() {
@@ -29,7 +39,7 @@ class CartSummary extends React.Component {
   deleteItem(itemID) {
     let copy = this.state.cartItems.filter(item => {
       const copyItems = Object.assign({}, item);
-      if (Number.parseInt(copyItems['ID']) === itemID) {
+      if (parseInt(copyItems['ID']) === itemID) {
         return false;
       }
       return true;
@@ -44,10 +54,10 @@ class CartSummary extends React.Component {
     let initialPrice = (0).toFixed(2);
     let totalPrice = 0;
     this.state.cartItems.map(item => {
-      if (Number.parseInt(item['count']) === 1) {
-        totalPrice += Number.parseFloat(item.Price);
+      if (parseInt(item['count']) === 1) {
+        totalPrice += parseFloat(item.Price);
       } else {
-        totalPrice += (Number.parseFloat(item.Price) * Number.parseInt(item['count']));
+        totalPrice += (parseFloat(item.Price) * parseInt(item['count']));
       }
     });
     let totalPriceRounded = totalPrice.toFixed(2) / Math.pow(10, 2);
@@ -64,9 +74,9 @@ class CartSummary extends React.Component {
         </>
       );
     } else {
-      let cartItem = this.state.cartItems.map(item => {
+      let cartItem = this.state.cartItems.map((item, index) => {
         return (
-          <CartSummaryItem key={item['ID']}
+          <CartSummaryItem key={index}
             item={item} setView={this.setView} deleteItem={this.deleteItem}/>
         );
       });

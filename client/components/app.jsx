@@ -84,6 +84,9 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getCartItems();
+    this.setState({
+      cartCount: this.state.cart.length
+    });
   }
 
   render() {
@@ -100,13 +103,13 @@ class App extends React.Component {
     }
     let cartSummary;
     if (this.state.view.name === 'cart') {
-      cartSummary = <CartSummary cartItems={this.state.cart} setView={this.setView}/>;
+      cartSummary = <CartSummary cartItems={this.state.cart} setView={this.setView} />;
     } else {
       cartSummary = null;
     }
     let checkoutForm;
     if (this.state.view.name === 'checkout') {
-      checkoutForm = <CheckoutForm cartItems={this.state.cart} setView={this.setView} placeOrder={this.placeOrder}/>;
+      checkoutForm = <CheckoutForm setView={this.setView} placeOrder={this.placeOrder}/>;
     } else {
       checkoutForm = null;
     }

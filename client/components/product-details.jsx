@@ -7,13 +7,16 @@ class ProductDetails extends React.Component {
     this.state = {
       product: {},
       quantity: 1,
-      addClicked: false
+      addClicked: false,
+      quantityConfirm: '',
+      canEnter: false
     };
     this.params = this.props.params;
     this.switchView = this.switchView.bind(this);
     this.switchCart = this.switchCart.bind(this);
     this.handleQuantityChange = this.handleQuantityChange.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   componentDidMount() {
@@ -33,15 +36,44 @@ class ProductDetails extends React.Component {
   }
 
   handleQuantityChange(event) {
-    this.setState({
-      quantity: event.target.value
-    });
+    if (event.target.value < 1) {
+      this.setState({
+        quantity: event.target.value,
+        quantityConfirm: 'Must enter a quantity greater than zero.'
+      });
+    } else {
+      this.setState({
+        quantity: event.target.value,
+        quantityConfirm: '',
+        canEnter: true
+      });
+    }
   }
 
   handleAdd() {
     this.setState({
       addClicked: true
     });
+  }
+
+  handleKeyPress(event) {
+    if (this.state.canEnter === true) {
+      if (event.key === 'Enter') {
+        this.setState({
+          quantityConfirm: 'Quantity successfully updated.'
+        });
+        setTimeout(() => {
+          this.setState({
+            quantityConfirm: ''
+          });
+        }, 3000);
+      }
+    } else {
+      this.setState({
+        quantityConfirm: 'Must enter a quantity greater than zero.'
+      });
+      return null;
+    }
   }
 
   render() {
@@ -88,14 +120,11 @@ class ProductDetails extends React.Component {
           <span>*One Size.</span>
           <p className="product-title">Product Description:</p>
           <p className="product-long">{productLong}</p>
-          <span>Select Item Quantity: </span>
-          <select className="custom-select quantity" onChange={this.handleQuantityChange} defaultValue="1">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
+          <span className="product-title ml-1">Input Item Quantity: </span>
+          <div className="form-container row">
+            <input type="text" className="form-control quantity align-self-start" placeholder="i.e. 3" value={this.state.quantity} onChange={this.handleQuantityChange} onKeyPress={this.handleKeyPress}></input>
+          </div>
+          <span className="quantity-confirm">{this.state.quantityConfirm}</span>
           <button type="button" onClick={() => { this.handleAdd(); this.props.addToCart(productToAdd); }} className="btn align-self-start add-cart">Add To Cart</button>
         </div>
       </div>
