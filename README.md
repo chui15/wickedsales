@@ -19,6 +19,7 @@ This app is only a DEMO, there are no actual transactions being made and no pers
 
 ## Preview
 
+![Xuyuan Shop](server/public/images/xuyuan.png)
 ![Xuyuan Shop](server/public/images/xuyuanshop.png)
 
 ## Live Demo
