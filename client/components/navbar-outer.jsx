@@ -1,6 +1,6 @@
 import React from 'react';
 
-class NavBar extends React.Component {
+class NavBarOuter extends React.Component {
   constructor(props) {
     super(props);
     this.getTops = this.getTops.bind(this);
@@ -30,7 +30,7 @@ class NavBar extends React.Component {
       <div className="row nav-bar">
         <div className="col align-items-start">
           <div className="nav-link" onClick={this.getTops}>Tops</div>
-          <div className="nav-link" onClick={this.getOuterwear}>Outerwear</div>
+          <div className="nav-clicked" onClick={this.getOuterwear}>Outerwear</div>
           <div className="nav-link" onClick={this.getBottoms}>Bottoms</div>
           <div className="nav-link" onClick={this.getAccessories}>Accessories</div>
         </div>
@@ -39,4 +39,4 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar;
+export default NavBarOuter;

@@ -10,12 +10,23 @@ class CartSummary extends React.Component {
     this.switchView = this.switchView.bind(this);
     this.getCheckout = this.getCheckout.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
+    this.getCartItems = this.getCartItems.bind(this);
+    this.calculateTotal = this.calculateTotal.bind(this);
   }
 
   componentDidMount() {
-    this.setState({
-      cartItems: this.props.cartItems
-    });
+    this.getCartItems();
+  }
+
+  getCartItems() {
+    fetch('/api/cart.php')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          cartItems: this.state.cartItems.concat(data)
+        });
+      })
+      .catch(error => console.error('Fetch failed', error));
   }
 
   switchView() {
@@ -26,10 +37,23 @@ class CartSummary extends React.Component {
     this.props.setView('checkout', {});
   }
 
+  calculateTotal() {
+    let totalPrice = 0;
+    this.state.cartItems.map(item => {
+      if (parseInt(item['count']) === 1) {
+        totalPrice += parseFloat(item.Price);
+      } else {
+        totalPrice += (parseFloat(item.Price) * parseInt(item['count']));
+      }
+    });
+    let totalPriceRounded = totalPrice.toFixed(2) / Math.pow(10, 2);
+    return totalPriceRounded;
+  }
+
   deleteItem(itemID) {
     let copy = this.state.cartItems.filter(item => {
       const copyItems = Object.assign({}, item);
-      if (Number.parseInt(copyItems['ID']) === itemID) {
+      if (parseInt(copyItems['ID']) === itemID) {
         return false;
       }
       return true;
@@ -42,19 +66,11 @@ class CartSummary extends React.Component {
 
   render() {
     let initialPrice = (0).toFixed(2);
-    let totalPrice = 0;
-    this.state.cartItems.map(item => {
-      if (Number.parseInt(item['count']) === 1) {
-        totalPrice += Number.parseFloat(item.Price);
-      } else {
-        totalPrice += (Number.parseFloat(item.Price) * Number.parseInt(item['count']));
-      }
-    });
-    let totalPriceRounded = totalPrice.toFixed(2) / Math.pow(10, 2);
+    let total = this.calculateTotal();
     if (this.state.cartItems.length === 0) {
       return (
         <>
-        <div>
+        <div className="back">
           <span className="returnCatalog ml-3" onClick={this.switchView}> &#8592; Back To Catalog</span>
         </div>
         <div>
@@ -64,15 +80,15 @@ class CartSummary extends React.Component {
         </>
       );
     } else {
-      let cartItem = this.state.cartItems.map(item => {
+      let cartItem = this.state.cartItems.map((item, index) => {
         return (
-          <CartSummaryItem key={item['ID']}
+          <CartSummaryItem key={index}
             item={item} setView={this.setView} deleteItem={this.deleteItem}/>
         );
       });
       return (
         <>
-        <div className="col-sm-4">
+        <div className="col-sm-4 back">
           <span className="returnCatalog" onClick={this.switchView}> &#8592; Back To Catalog</span>
         </div>
         <div className="row">
@@ -80,13 +96,13 @@ class CartSummary extends React.Component {
         </div>
         <div className="cart-container">
           <div className="cart-item">{cartItem}</div>
-        </div>
           <div className="row">
-            <h3 className="col-md-9 ml-5 item-total align-self-center">Item Total: {'$' + totalPriceRounded + '.00'}</h3>
+            <h3 className="col-md-9 ml-4 item-total align-self-center">Item Total: {'$' + total + '.00'}</h3>
             <span className="col-md-2 align-self-end">
               <button type="button" className="btn checkout" onClick={this.getCheckout}>Checkout</button>
             </span>
           </div>
+        </div>
         </>
       );
     }

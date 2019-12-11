@@ -2,6 +2,10 @@ import React from 'react';
 import ProductList from './product-list';
 import Header from './header';
 import NavBar from './navbar';
+import NavBarTops from './navbar-tops';
+import NavBarBottoms from './navbar-bottoms';
+import NavBarAccessories from './navbar-accessories';
+import NavBarOuter from './navbar-outer';
 import ProductDetails from './product-details';
 import CartSummary from './cartsummary';
 import CheckoutForm from './checkout-form';
@@ -80,26 +84,35 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getCartItems();
+    this.setState({
+      cartCount: this.state.cart.length
+    });
   }
 
   render() {
+    let navBar;
     let product;
+    let homeBanner;
     if (this.state.view.name === 'catalog') {
       product = <ProductList setView={this.setView} />;
+      navBar = <NavBar setView={this.setView} params={this.state.view.params} />;
+      homeBanner = <img src="images/home-banner.jpg" alt="" className="home-banner"/>;
     } else if (this.state.view.name === 'details') {
       product = <ProductDetails setView={this.setView} params={this.state.view.params} addToCart={this.addToCart}/>;
     } else {
       product = null;
+      navBar = null;
+      homeBanner = null;
     }
     let cartSummary;
     if (this.state.view.name === 'cart') {
-      cartSummary = <CartSummary cartItems={this.state.cart} setView={this.setView}/>;
+      cartSummary = <CartSummary cartItems={this.state.cart} setView={this.setView} />;
     } else {
       cartSummary = null;
     }
     let checkoutForm;
     if (this.state.view.name === 'checkout') {
-      checkoutForm = <CheckoutForm cartItems={this.state.cart} setView={this.setView} placeOrder={this.placeOrder}/>;
+      checkoutForm = <CheckoutForm setView={this.setView} placeOrder={this.placeOrder}/>;
     } else {
       checkoutForm = null;
     }
@@ -112,30 +125,34 @@ class App extends React.Component {
     let tops;
     if (this.state.view.name === 'tops') {
       tops = <Tops setView={this.setView} />;
+      navBar = <NavBarTops setView={this.setView} params={this.state.view.params}/>;
     } else {
       tops = null;
     }
     let outerwear;
     if (this.state.view.name === 'outerwear') {
       outerwear = <Outerwear setView={this.setView} />;
+      navBar = <NavBarOuter setView={this.setView} params={this.state.view.params} />;
     } else {
       outerwear = null;
     }
     let bottoms;
     if (this.state.view.name === 'bottoms') {
       bottoms = <Bottoms setView={this.setView} />;
+      navBar = <NavBarBottoms setView={this.setView} params={this.state.view.params} />;
     } else {
       bottoms = null;
     }
     let accessories;
     if (this.state.view.name === 'accessories') {
       accessories = <Accessories setView={this.setView} />;
+      navBar = <NavBarAccessories setView={this.setView} params={this.state.view.params} />;
     } else {
       accessories = null;
     }
     let initialModal;
     if (this.state.initialModal === true) {
-      initialModal = <InitialModal showModal={this.state.initialModal}/>;
+      initialModal = <InitialModal showModal={this.state.initialModal} />;
     } else {
       initialModal = null;
     }
@@ -149,7 +166,8 @@ class App extends React.Component {
       <>
       {initialModal}
       <Header cartItemCount={cartCount} setView={this.setView} params={this.state.view.params} />
-      <NavBar setView={this.setView} params={this.state.view.params} />
+      {homeBanner}
+      {navBar}
       {product}
       {cartSummary}
       {checkoutForm}

@@ -13,7 +13,7 @@ class CheckoutForm extends React.Component {
       creditCardCheck: '',
       shippingAddressCheck: '',
       orderPlaced: false,
-      cartItems: this.props.cartItems
+      cartItems: []
     };
     this.switchView = this.switchView.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
@@ -21,6 +21,22 @@ class CheckoutForm extends React.Component {
     this.handleShippingAddress = this.handleShippingAddress.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.switchCart = this.switchCart.bind(this);
+    this.getCartItems = this.getCartItems.bind(this);
+  }
+
+  componentDidMount() {
+    this.getCartItems();
+  }
+
+  getCartItems() {
+    fetch('/api/cart.php')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          cartItems: this.state.cartItems.concat(data)
+        });
+      })
+      .catch(error => console.error('Fetch failed', error));
   }
 
   switchView() {
@@ -32,21 +48,52 @@ class CheckoutForm extends React.Component {
   }
 
   handleNameChange(event) {
-    this.setState({
-      name: event.target.value
-    });
+    const regexName = /.{6,}/;
+    let trimmedName = event.target.value.trim();
+    if (!regexName.test(trimmedName) && trimmedName !== '') {
+      this.setState({
+        name: event.target.value,
+        nameCheck: 'Must have a valid name (at least 6 characters).'
+      });
+    } else {
+      this.setState({
+        name: event.target.value,
+        nameCheck: ''
+      });
+    }
   }
 
   handleCreditCard(event) {
-    this.setState({
-      creditCard: event.target.value
-    });
+    const regexName = /.{6,}/;
+    const regexCard = /\b(?:3[47]\d|(?: 4\d|5[1 - 5]|65)\d{2}|6011)\d{12}\b/;
+    let trimmedCard = event.target.value.trim();
+    if (!regexCard.test(trimmedCard) || !regexName.test(trimmedCard) || trimmedCard !== '') {
+      this.setState({
+        creditCard: event.target.value,
+        creditCardCheck: 'Must enter a 16 digit card number (numeric values only).'
+      });
+    } else {
+      this.setState({
+        creditCard: event.target.value,
+        creditCardCheck: ''
+      });
+    }
   }
 
   handleShippingAddress(event) {
-    this.setState({
-      shippingAddress: event.target.value
-    });
+    const regexAddress = /.{21,}/;
+    let trimmedAddress = event.target.value.trim();
+    if (!regexAddress.test(trimmedAddress) && trimmedAddress !== '') {
+      this.setState({
+        shippingAddress: event.target.value,
+        shippingAddressCheck: 'Must enter a valid address.'
+      });
+    } else {
+      this.setState({
+        shippingAddress: event.target.value,
+        shippingAddressCheck: ''
+      });
+    }
   }
 
   handleSubmit(event) {
@@ -65,55 +112,18 @@ class CheckoutForm extends React.Component {
         });
       }, 3000);
     } else {
-      const regexName = /.{5,}/;
-      const regexCard = /\b(?:3[47]\d|(?:4\d|5[1-5]|65)\d{2}|6011)\d{12}\b/;
-      const regexAddress = /.{10,}/;
-      let trimmedName = this.state.name.trim();
-      let trimmedCard = this.state.creditCard.trim();
-      let trimmedAddress = this.state.shippingAddress.trim();
-      if (!regexName.test(trimmedName) && trimmedName !== '') {
-        this.setState({
-          nameCheck: 'Must have a valid name.'
-        });
-        setTimeout(() => {
-          this.setState({
-            nameCheck: ''
-          });
-        }, 3000);
-      }
-      if (!regexCard.test(trimmedCard) && !regexName.test(trimmedCard) && trimmedCard !== '') {
-        this.setState({
-          creditCardCheck: 'Must enter a 16 digit card number (numeric values only).'
-        });
-        setTimeout(() => {
-          this.setState({
-            creditCardCheck: ''
-          });
-        }, 3000);
-      }
-      if (!regexAddress.test(trimmedAddress) && trimmedAddress !== '') {
-        this.setState({
-          shippingAddressCheck: 'Must enter a valid address.'
-        });
-        setTimeout(() => {
-          this.setState({
-            shippingAddressCheck: ''
-          });
-        }, 3000);
-      } else {
-        const newOrder = {
-          name: this.state.name,
-          creditCard: this.state.creditCard,
-          shippingAddress: this.state.shippingAddress
-        };
-        this.props.placeOrder(newOrder);
-        this.setState({
-          name: '',
-          creditCard: '',
-          shippingAddress: '',
-          orderPlaced: true
-        });
-      }
+      const newOrder = {
+        name: this.state.name,
+        creditCard: this.state.creditCard,
+        shippingAddress: this.state.shippingAddress
+      };
+      this.props.placeOrder(newOrder);
+      this.setState({
+        name: '',
+        creditCard: '',
+        shippingAddress: '',
+        orderPlaced: true
+      });
     }
   }
 
@@ -131,11 +141,11 @@ class CheckoutForm extends React.Component {
       confirmationModal = null;
     }
     let totalPrice = 0;
-    this.props.cartItems.map(item => {
-      if (Number.parseInt(item['count']) === 1) {
-        totalPrice += Number.parseFloat(item.Price);
+    this.state.cartItems.map(item => {
+      if (parseInt(item['count']) === 1) {
+        totalPrice += parseFloat(item.Price);
       } else {
-        totalPrice += (Number.parseFloat(item.Price) * Number.parseInt(item['count']));
+        totalPrice += (parseFloat(item.Price) * parseInt(item['count']));
       }
     });
     let totalPriceRounded = totalPrice.toFixed(2) / Math.pow(10, 2);
@@ -146,7 +156,7 @@ class CheckoutForm extends React.Component {
     });
     return (
       <>
-      <div className="col-sm-4">
+      <div className="col-sm-4 back">
         <span className="returnCatalog" onClick={this.switchCart}> &#8592; Return to Cart</span>
       </div>
       <div>
@@ -156,9 +166,9 @@ class CheckoutForm extends React.Component {
       <div className="row">
         <div className="form-container">
           <form className="col-11 ml-3">
-            <h5>Name</h5>
+            <h5>Full Name</h5>
             <span className="field-check">{this.state.nameCheck}</span>
-            <input type="text" className="form-control form-rounded" value={this.state.name} placeholder="Name" onChange={this.handleNameChange}></input>
+            <input type="text" className="form-control form-rounded" value={this.state.name} placeholder="Full Name" onChange={this.handleNameChange}></input>
             <h5 className="credit-card-name">Credit Card</h5>
             <span className="field-check">{this.state.creditCardCheck}</span>
             <input type="text" className="form-control form-rounded credit-card" value={this.state.creditCard} placeholder="1234 5678 9900 0000" onChange={this.handleCreditCard}></input>
