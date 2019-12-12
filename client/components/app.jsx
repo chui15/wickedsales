@@ -157,7 +157,7 @@ class App extends React.Component {
       initialModal = null;
     }
     let scrollButton;
-    if (this.state.view.name === 'catalog') {
+    if (this.state.view.name === 'catalog' || this.state.view.name === 'accessories' || this.state.view.name === 'bottoms' || this.state.view.name === 'tops' || this.state.view.name === 'outerwear') {
       scrollButton = <ScrollButton scrollStepInPx="50" delayInMs="16.66" />;
     } else {
       scrollButton = null;
