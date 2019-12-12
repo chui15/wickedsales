@@ -9,12 +9,18 @@ class CartSummary extends React.Component {
     };
     this.switchView = this.switchView.bind(this);
     this.getCheckout = this.getCheckout.bind(this);
-    this.deleteItem = this.deleteItem.bind(this);
     this.getCartItems = this.getCartItems.bind(this);
     this.calculateTotal = this.calculateTotal.bind(this);
   }
 
   componentDidMount() {
+    this.getCartItems();
+  }
+
+  componentWillReceiveProps() {
+    this.setState({
+      cartItems: []
+    });
     this.getCartItems();
   }
 
@@ -50,20 +56,6 @@ class CartSummary extends React.Component {
     return totalPriceRounded;
   }
 
-  deleteItem(itemID) {
-    let copy = this.state.cartItems.filter(item => {
-      const copyItems = Object.assign({}, item);
-      if (parseInt(copyItems['ID']) === itemID) {
-        return false;
-      }
-      return true;
-    });
-    fetch('/api/cart_delete.php', { method: 'POST', body: JSON.stringify(itemID), headers: { 'Content-Type': 'application/json' } })
-      .then(res => res.json())
-      .then(this.setState({ cartItems: copy }))
-      .catch(err => { console.error('There was an error:', err); });
-  }
-
   render() {
     let initialPrice = (0).toFixed(2);
     let total = this.calculateTotal();
@@ -83,7 +75,7 @@ class CartSummary extends React.Component {
       let cartItem = this.state.cartItems.map((item, index) => {
         return (
           <CartSummaryItem key={index}
-            item={item} setView={this.setView} deleteItem={this.deleteItem}/>
+            item={item} setView={this.setView} deleteItem={this.props.deleteItem}/>
         );
       });
       return (

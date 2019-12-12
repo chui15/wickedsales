@@ -45,7 +45,7 @@ class CartSummaryItem extends React.Component {
           this.setState({
             quantityConfirm: ''
           });
-        }, 3000);
+        }, 2000);
       }
     } else {
       this.setState({
