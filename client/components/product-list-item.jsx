@@ -11,7 +11,7 @@ class ProductListItem extends React.Component {
   }
 
   render() {
-    let price = Number.parseFloat(this.props.product.Price);
+    let price = parseFloat(this.props.product.Price);
     let priceRounded = price / Math.pow(10, 2);
     return (
       <div className="square col-sm-4">

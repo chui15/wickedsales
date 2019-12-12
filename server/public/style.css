@@ -186,6 +186,7 @@ header {
 
 .product-image:hover {
   cursor: pointer;
+  box-shadow: 2px 2px 2px 2px #F9E7E7;
 }
 
 .cart-item {
@@ -197,7 +198,7 @@ header {
 }
 
 .item-image {
-  height: 230px;
+  height: 250px;
   width: 240px;
   padding-top: 20px;
 }

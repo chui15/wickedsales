@@ -3,7 +3,7 @@ import React from 'react';
 function OrderSummaryItem(props) {
   let price = props.item.Price;
   let priceRounded = price / Math.pow(10, 2);
-  let count = Number.parseFloat(props.item.count);
+  let count = parseFloat(props.item.count);
   return (
     <>
     <div className="row">

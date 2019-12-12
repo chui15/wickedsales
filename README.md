@@ -1,6 +1,6 @@
 # 許願 (Xu Yuan) Shop
 
-A full stack LAMP & React shopping cart app made for desktop browsers.
+A full-stack LAMP & React.js eCommerce/shopping cart app made for desktop browsers.
 
 ## Disclaimer
 
@@ -20,7 +20,7 @@ This app is only a DEMO, there are no actual transactions being made and no pers
 ## Preview
 
 ![Xuyuan Shop](server/public/images/xuyuan.png)
-![Xuyuan Shop](server/public/images/xuyuanshop.png)
+![Xuyuan Shop](server/public/images/xuyuanpreview.png)
 
 ## Live Demo
 
@@ -29,7 +29,7 @@ Try the application live at [http://xuyuan.christiehui.com]
 
 ## Features
 
-- User can view a catalog of products.
+- User can view a catalog of products, as well as products sorted by category.
 - User can view the details of an individual product.
-- User can add a product to their cart.
-- User can "check out" the items in their cart.
+- User can add a product with a custom quantity to their cart.
+- User can "check out" the items in their cart and place an order.

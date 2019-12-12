@@ -31,6 +31,7 @@ class App extends React.Component {
     this.getCartItems = this.getCartItems.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
   }
 
   setView(name, params) {
@@ -63,6 +64,19 @@ class App extends React.Component {
         });
       })
       .catch(error => console.error(error));
+  }
+
+  deleteItem(itemID) {
+    fetch('/api/cart_delete.php', { method: 'POST', body: JSON.stringify(itemID), headers: { 'Content-Type': 'application/json' } })
+      .then(res => res.json())
+      .then(data => {
+        let copy = this.state.cart.filter(item => {
+          const copyItems = Object.assign({}, item);
+          return (parseInt(copyItems['ID']) !== itemID && parseInt(copyItems['id']) !== itemID);
+        });
+        this.setState({ cart: copy });
+      })
+      .catch(err => { console.error('There was an error:', err); });
   }
 
   placeOrder(order) {
@@ -106,7 +120,7 @@ class App extends React.Component {
     }
     let cartSummary;
     if (this.state.view.name === 'cart') {
-      cartSummary = <CartSummary cartItems={this.state.cart} setView={this.setView} />;
+      cartSummary = <CartSummary cartItems={this.state.cart} setView={this.setView} deleteItem={this.deleteItem}/>;
     } else {
       cartSummary = null;
     }
@@ -157,7 +171,7 @@ class App extends React.Component {
       initialModal = null;
     }
     let scrollButton;
-    if (this.state.view.name === 'catalog') {
+    if (this.state.view.name === 'catalog' || this.state.view.name === 'accessories' || this.state.view.name === 'bottoms' || this.state.view.name === 'tops' || this.state.view.name === 'outerwear') {
       scrollButton = <ScrollButton scrollStepInPx="50" delayInMs="16.66" />;
     } else {
       scrollButton = null;

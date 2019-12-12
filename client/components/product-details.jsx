@@ -67,7 +67,7 @@ class ProductDetails extends React.Component {
           this.setState({
             quantityConfirm: ''
           });
-        }, 3000);
+        }, 2000);
       }
     } else {
       this.setState({
@@ -86,7 +86,7 @@ class ProductDetails extends React.Component {
     }
     if (this.state.product) {
       let productName = this.state.product.Name;
-      let productPrice = Number.parseInt(this.state.product.Price);
+      let productPrice = parseInt(this.state.product.Price);
       let priceRounded = productPrice / Math.pow(10, 2);
       if (this.state.product.images) {
         var productImage1 = this.state.product['images'][1];
