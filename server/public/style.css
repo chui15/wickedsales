@@ -773,7 +773,7 @@ and (-webkit-min-device-pixel-ratio: 2)  {
   }
 
   .single-product {
-    height: 78%;
+    height: 75%;
     overflow-y: hidden;
     margin-top: 5%;
   }
