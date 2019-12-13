@@ -24,7 +24,7 @@ This app is only a DEMO, there are no actual transactions being made and no pers
 
 ## Live Demo
 
-Try the application live at [http://xuyuan.christiehui.com]
+Try the application live at [https://xuyuan.christiehui.com]
 *Note: application is best viewed on desktop browsers (at the moment).
 
 ## Features
