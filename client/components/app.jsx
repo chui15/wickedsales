@@ -179,17 +179,21 @@ class App extends React.Component {
     return (
       <>
       {initialModal}
-      <Header cartItemCount={cartCount} setView={this.setView} params={this.state.view.params} />
-      {homeBanner}
-      {navBar}
-      {product}
-      {cartSummary}
-      {checkoutForm}
-      {tops}
-      {outerwear}
-      {bottoms}
-      {accessories}
-      {scrollButton}
+      <div className="wrapper">
+        <Header cartItemCount={cartCount} setView={this.setView} params={this.state.view.params} />
+        {homeBanner}
+        {navBar}
+        {product}
+        {cartSummary}
+        {checkoutForm}
+        {tops}
+        {outerwear}
+        {bottoms}
+        {accessories}
+        {scrollButton}
+      </div>
+      <p className="wrapper-message">Please rotate your screen back to landscape orientation to proceed!</p>
+      <img src="images/initialmodalgif.gif" alt="" className="wrapper-image"/>
       </>
     );
   }

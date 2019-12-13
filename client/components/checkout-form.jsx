@@ -64,7 +64,7 @@ class CheckoutForm extends React.Component {
   }
 
   handleCreditCard(event) {
-    const regexName = /.{16,}/;
+    const regexName = /^.{16}$/;
     let trimmedCard = event.target.value.trim();
     if (!regexName.test(trimmedCard) && trimmedCard !== '') {
       const updateCardValue = /^\d{0,16}$/.test(event.target.value);
@@ -88,7 +88,7 @@ class CheckoutForm extends React.Component {
     if (!regexAddress.test(trimmedAddress) && trimmedAddress !== '') {
       this.setState({
         shippingAddress: event.target.value,
-        shippingAddressCheck: 'Must enter a valid address.'
+        shippingAddressCheck: 'Must enter a valid address (at least 21 characters).'
       });
     } else {
       this.setState({
@@ -182,8 +182,8 @@ class CheckoutForm extends React.Component {
         <h6 className="col-lg-8 ml-4 disclaimer">*Please do NOT enter any real personal information! This form is for demo purposes ONLY.</h6>
       </div>
       <div className="checkout-container row">
-        <div className="form-container col-md-7">
-          <form className="col-lg-9 col-md-11 ml-3">
+        <div className="form-container col-lg-7 col-md-8 col-sm-7">
+          <form className="col-lg-10 col-md-9 col-sm-9 ml-3">
             <h5>Full Name</h5>
             <span className="field-check">{this.state.nameCheck}</span>
             <input type="text" className="form-control form-rounded" value={this.state.name} placeholder="Full Name" onChange={this.handleNameChange}></input>
@@ -195,7 +195,7 @@ class CheckoutForm extends React.Component {
             <textarea rows="4" cols="50" className="form-control form-rounded shipping-address" placeholder="i.e. 123 Lane, Los Angeles, CA 12345" value={this.state.shippingAddress} onChange={this.handleShippingAddress}></textarea>
           </form>
         </div>
-        <div className="cart-summary-container col-lg-4 col-md-5">
+        <div className="cart-summary-container col-sm-4 col-lg-4 col-md-5">
           <h4 className="ml-2">Order Summary</h4>
           <div className="order-item">{orderItem}</div>
           <h5 className="ml-2 checkout-total">Order Total: {'$' + totalPriceRounded + '.00'}</h5>

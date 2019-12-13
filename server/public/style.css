@@ -84,7 +84,7 @@ header {
   border-bottom: 1px solid darkgray;
 }
 
-.modal-disclaimer {
+.modal-disclaimer-1, .modal-disclaimer-2 {
   margin: 4%;
   vertical-align: center;
   font-size: 20px;
@@ -379,7 +379,7 @@ header {
 .remove-modal-content {
   background-color: white;
   width: 40%;
-  height: 45vh;
+  height: auto;
   border-radius: 10px;
   box-shadow: 0px 0px 2px gray;
   border: 2px solid rgb(146, 144, 144);
@@ -401,6 +401,7 @@ header {
   padding: 10px;
   display: inline-block;
   margin-top: 2%;
+  margin-bottom: 5%;
 }
 
 .checkout, .place-order {
@@ -552,6 +553,18 @@ header {
   margin-left: -5px;
 }
 
+.wrapper-image {
+  height: 0px;
+}
+
+.wrapper-message {
+  font-size: 0px;
+}
+
+.initial-modal-gif {
+  height: 0px;
+}
+
 @media only screen
 and (min-width : 768px)
 and (max-width : 1024px)
@@ -561,6 +574,20 @@ and (-webkit-min-device-pixel-ratio: 2)  {
   header, .nav-bar, .products-container {
     overflow-x: hidden;
     width: 155%;
+  }
+
+  .modal-disclaimer-1 {
+    font-size: 25px;
+    margin-left: 3%;
+    margin-top: 3%;
+  }
+
+  .modal-disclaimer-2 {
+    display: none;
+  }
+
+  .initial-modal-gif {
+    display: none;
   }
 
   .nav-link, .nav-clicked {
@@ -658,8 +685,13 @@ and (-webkit-min-device-pixel-ratio: 2)  {
     padding: 18px;
   }
 
+  .remove-modal-content {
+    height: auto;
+  }
+
   .remove-modal-button {
     margin-left: 25%;
+    margin-bottom: 5%;
   }
 
   .checkout-container {
@@ -678,6 +710,10 @@ and (-webkit-min-device-pixel-ratio: 2)  {
   .cart-summary-container {
     margin-bottom: 5%;
   }
+
+  .wrapper-message, .wrapper-image {
+    display: none;
+  }
 }
 
 @media only screen
@@ -686,25 +722,51 @@ and (-webkit-min-device-pixel-ratio: 2)  {
   and (orientation: portrait)
   and (-webkit-min-device-pixel-ratio: 2) {
 
+  .initial-modal-gif {
+    height: 290px;
+    margin-left: 160px;
+  }
+
   .initial-modal-back {
     background-color: rgba(0,0,0,1);
   }
 
   .initial-modal-content {
     width: 80%;
-    height: 70vh;
+    height: 60vh;
   }
 
   .initial-modal-title {
     font-size: 35px;
   }
 
-  .modal-disclaimer {
-    font-size: 35px;
+  .modal-disclaimer-2 {
+    font-size: 22px;
+    margin-left: 3%;
+  }
+
+  .modal-disclaimer-1 {
+    display: none;
   }
 
   .modal-button {
     display: none;
+  }
+
+  .wrapper {
+    display: none;
+  }
+
+  .wrapper-message {
+    font-size: 40px;
+    margin-top: 30%;
+    text-align: center;
+  }
+
+  .wrapper-image {
+    height: 600px;
+    text-align: center;
+    margin-left: 10%;
   }
 }
 
@@ -714,13 +776,31 @@ and (-webkit-min-device-pixel-ratio: 2)  {
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: landscape) {
 
+  .initial-modal-gif {
+    display: none;
+  }
+
   .header-definition {
     font-size: 18px;
   }
 
   .initial-modal-content {
     width: 60%;
-    height: 120vh;
+    height: auto;
+  }
+
+  .modal-button {
+    margin-bottom: 5%;
+  }
+
+  .modal-disclaimer-1 {
+    font-size: 23px;
+    margin-left: 3%;
+    margin-top: 3%;
+  }
+
+  .modal-disclaimer-2 {
+    display: none;
   }
 
   header, .nav-bar {
@@ -794,7 +874,7 @@ and (-webkit-min-device-pixel-ratio: 2)  {
     margin-top: 2%;
   }
 
-  .add-cart, .checkout, .place-order, .remove-modal-button {
+  .add-cart, .checkout, .place-order, .remove-modal-button, .modal-button {
     padding: 15px;
   }
 
@@ -818,15 +898,20 @@ and (-webkit-min-device-pixel-ratio: 2)  {
   }
 
   .remove-modal-content {
-    height: 80vh;
+    height: auto;
   }
 
   .remove-modal-button {
     margin-left: 25%;
+    margin-bottom: 5%;
   }
 
   .cart-summary-container {
     margin-bottom: 5%;
+  }
+
+  .wrapper-message, .wrapper-image {
+    display: none;
   }
 
 }
@@ -836,24 +921,51 @@ and (-webkit-min-device-pixel-ratio: 2)  {
   and (max-width: 667px)
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: portrait) {
+
+  .initial-modal-gif {
+    height: 150px;
+    margin-left: 50px;
+  }
+
   .initial-modal-back {
     background-color: rgba(0,0,0,1);
   }
 
   .initial-modal-content {
-    width: 80%;
-    height: 110vh;
+    width: 70%;
+    height: 55vh;
   }
 
   .initial-modal-title {
-    font-size: 35px;
+    font-size: 15px;
   }
 
-  .modal-disclaimer {
-    font-size: 35px;
+  .modal-disclaimer-1 {
+    display: none;
+  }
+
+  .modal-disclaimer-2 {
+    font-size: 13px;
+    margin-left: 5%;
   }
 
   .modal-button {
     display: none;
+  }
+
+  .wrapper {
+    display: none;
+  }
+
+  .wrapper-message {
+    font-size: 20px;
+    margin-top: 40%;
+    text-align: center;
+  }
+
+  .wrapper-image {
+    height: 300px;
+    text-align: center;
+    margin-left: 10%;
   }
 }
