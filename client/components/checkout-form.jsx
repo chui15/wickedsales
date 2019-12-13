@@ -179,11 +179,11 @@ class CheckoutForm extends React.Component {
       </div>
       <div>
         <h2 className="col ml-4">Checkout</h2>
-        <h6 className="col ml-4 disclaimer">*Please do NOT enter any real personal information! This form is for demo purposes ONLY.</h6>
+        <h6 className="col-lg-8 ml-4 disclaimer">*Please do NOT enter any real personal information! This form is for demo purposes ONLY.</h6>
       </div>
       <div className="checkout-container row">
         <div className="form-container col-md-7">
-          <form className="col-11 col-md-11 ml-3">
+          <form className="col-lg-9 col-md-11 ml-3">
             <h5>Full Name</h5>
             <span className="field-check">{this.state.nameCheck}</span>
             <input type="text" className="form-control form-rounded" value={this.state.name} placeholder="Full Name" onChange={this.handleNameChange}></input>
@@ -195,7 +195,7 @@ class CheckoutForm extends React.Component {
             <textarea rows="4" cols="50" className="form-control form-rounded shipping-address" placeholder="i.e. 123 Lane, Los Angeles, CA 12345" value={this.state.shippingAddress} onChange={this.handleShippingAddress}></textarea>
           </form>
         </div>
-        <div className="cart-summary-container col-4 col-md-5">
+        <div className="cart-summary-container col-lg-4 col-md-5">
           <h4 className="ml-2">Order Summary</h4>
           <div className="order-item">{orderItem}</div>
           <h5 className="ml-2 checkout-total">Order Total: {'$' + totalPriceRounded + '.00'}</h5>
