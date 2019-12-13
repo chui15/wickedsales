@@ -29,7 +29,7 @@ class NavBarTops extends React.Component {
     return (
       <div className="row nav-bar">
         <div className="col align-items-start">
-          <div className="nav-clicked" onClick={this.getTops}>Tops</div>
+          <div className="nav-clicked">Tops</div>
           <div className="nav-link" onClick={this.getOuterwear}>Outerwear</div>
           <div className="nav-link" onClick={this.getBottoms}>Bottoms</div>
           <div className="nav-link" onClick={this.getAccessories}>Accessories</div>

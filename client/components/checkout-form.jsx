@@ -64,14 +64,16 @@ class CheckoutForm extends React.Component {
   }
 
   handleCreditCard(event) {
-    const regexName = /.{6,}/;
-    const regexCard = /\b(?:3[47]\d|(?: 4\d|5[1 - 5]|65)\d{2}|6011)\d{12}\b/;
+    const regexName = /.{16,}/;
     let trimmedCard = event.target.value.trim();
-    if (!regexCard.test(trimmedCard) || !regexName.test(trimmedCard) || trimmedCard !== '') {
-      this.setState({
-        creditCard: event.target.value,
-        creditCardCheck: 'Must enter a 16 digit card number (numeric values only).'
-      });
+    if (!regexName.test(trimmedCard) && trimmedCard !== '') {
+      const updateCardValue = /^\d{0,16}$/.test(event.target.value);
+      if (updateCardValue) {
+        this.setState({
+          creditCard: event.target.value,
+          creditCardCheck: 'Must enter a 16 digit card number (numeric values only).'
+        });
+      }
     } else {
       this.setState({
         creditCard: event.target.value,
@@ -98,16 +100,32 @@ class CheckoutForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    if (this.state.name === '' || this.state.creditCard === '' || this.state.shippingAddress === '') {
+    if (this.state.name === '') {
       this.setState({
-        nameCheck: 'Field cannot be empty.',
-        creditCardCheck: 'Field cannot be empty.',
+        nameCheck: 'Field cannot be empty.'
+      });
+      setTimeout(() => {
+        this.setState({
+          nameCheck: ''
+        });
+      }, 3000);
+    }
+    if (this.state.creditCard === '') {
+      this.setState({
+        creditCardCheck: 'Field cannot be empty.'
+      });
+      setTimeout(() => {
+        this.setState({
+          creditCardCheck: ''
+        });
+      }, 3000);
+    }
+    if (this.state.shippingAddress === '') {
+      this.setState({
         shippingAddressCheck: 'Field cannot be empty.'
       });
       setTimeout(() => {
         this.setState({
-          nameCheck: '',
-          creditCardCheck: '',
           shippingAddressCheck: ''
         });
       }, 3000);
@@ -156,16 +174,16 @@ class CheckoutForm extends React.Component {
     });
     return (
       <>
-      <div className="col-sm-4 back">
+      <div className="col-sm-5 back">
         <span className="returnCatalog" onClick={this.switchCart}> &#8592; Return to Cart</span>
       </div>
       <div>
         <h2 className="col ml-4">Checkout</h2>
         <h6 className="col ml-4 disclaimer">*Please do NOT enter any real personal information! This form is for demo purposes ONLY.</h6>
       </div>
-      <div className="row">
-        <div className="form-container">
-          <form className="col-11 ml-3">
+      <div className="checkout-container row">
+        <div className="form-container col-md-7">
+          <form className="col-11 col-md-11 ml-3">
             <h5>Full Name</h5>
             <span className="field-check">{this.state.nameCheck}</span>
             <input type="text" className="form-control form-rounded" value={this.state.name} placeholder="Full Name" onChange={this.handleNameChange}></input>
@@ -177,7 +195,7 @@ class CheckoutForm extends React.Component {
             <textarea rows="4" cols="50" className="form-control form-rounded shipping-address" placeholder="i.e. 123 Lane, Los Angeles, CA 12345" value={this.state.shippingAddress} onChange={this.handleShippingAddress}></textarea>
           </form>
         </div>
-        <div className="cart-summary-container col-4">
+        <div className="cart-summary-container col-4 col-md-5">
           <h4 className="ml-2">Order Summary</h4>
           <div className="order-item">{orderItem}</div>
           <h5 className="ml-2 checkout-total">Order Total: {'$' + totalPriceRounded + '.00'}</h5>
