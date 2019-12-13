@@ -85,15 +85,15 @@ class CartSummaryItem extends React.Component {
     return (
       <>
         <div className="cart-square row">
-          <div className="col-12 col-md-4">
-            <span className="col-md-5">
+          <div className="col-12 col-md-4 col-sm-4 ml-2">
+            <span className="col-sm-5 col-md-5">
               <img src={this.props.item.Image} className="item-image"></img>
             </span>
           </div>
-          <div className="col-xs-4 ml-5 align-self-center">
+          <div className="col-sm-7 col-md-7 ml-5 align-self-center">
             <h5 className="item-title">{this.props.item.Name}</h5>
             <span className="price">{'$' + priceRounded + '.00'}</span>
-            <span>Quantity: {editQuantity}</span>
+            <h5>Quantity: {editQuantity}</h5>
             <span className="quantity-confirm">{this.state.quantityConfirm}</span>
             <span className="delete-cart" onClick={this.handleRemove}>&times; Remove from cart</span>
           </div>

@@ -80,7 +80,7 @@ class CartSummary extends React.Component {
       });
       return (
         <>
-        <div className="col-sm-4 back">
+        <div className="col-sm-5 back">
           <span className="returnCatalog" onClick={this.switchView}> &#8592; Back To Catalog</span>
         </div>
         <div className="row">
@@ -89,8 +89,8 @@ class CartSummary extends React.Component {
         <div className="cart-container">
           <div className="cart-item">{cartItem}</div>
           <div className="row">
-            <h3 className="col-md-9 ml-4 item-total align-self-center">Item Total: {'$' + total + '.00'}</h3>
-            <span className="col-md-2 align-self-end">
+            <h3 className="col-md-9 col-sm-9 ml-4 item-total align-self-center">Item Total: {'$' + total + '.00'}</h3>
+            <span className="col-md-2 col-sm-2 align-self-end">
               <button type="button" className="btn checkout" onClick={this.getCheckout}>Checkout</button>
             </span>
           </div>

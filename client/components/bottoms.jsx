@@ -26,15 +26,17 @@ class Bottoms extends React.Component {
   }
 
   render() {
-    let product = this.state.products.map(product => {
+    let products = this.state.products.map(product => {
       return (
-        <ProductListItem key={product.id} product={product} setView={this.props.setView} />
+        <ProductListItem key={product.id}
+          product={product} setView={this.props.setView} />
       );
     });
+
     return (
-      <>
-        {product}
-      </>
+      <div className="products-container">
+        {products}
+      </div>
     );
   }
 }
