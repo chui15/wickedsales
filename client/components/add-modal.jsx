@@ -14,7 +14,7 @@ class AddModal extends React.Component {
   close() {
     this.setState({
       showModal: false
-    });
+    }, () => this.props.handleCancel());
   }
 
   switchCart() {
