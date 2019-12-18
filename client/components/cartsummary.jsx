@@ -5,7 +5,7 @@ class CartSummary extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cartItems: []
+      cartItems: this.props.cartItems
     };
     this.switchView = this.switchView.bind(this);
     this.getCheckout = this.getCheckout.bind(this);
@@ -13,15 +13,12 @@ class CartSummary extends React.Component {
     this.calculateTotal = this.calculateTotal.bind(this);
   }
 
-  componentDidMount() {
-    this.getCartItems();
-  }
-
-  componentWillReceiveProps() {
-    this.setState({
-      cartItems: []
-    });
-    this.getCartItems();
+  componentDidUpdate(prevProps) {
+    if (this.props.cartItems.length !== prevProps.cartItems.length) {
+      this.setState({
+        cartItems: []
+      }, this.getCartItems);
+    }
   }
 
   getCartItems() {

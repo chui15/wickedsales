@@ -106,7 +106,7 @@ class ProductDetails extends React.Component {
         'Name': productName,
         'Price': productPrice,
         'Short Description': this.state.product['Short Description'],
-        'id': this.state.product.id,
+        'ID': this.state.product.id,
         'Image': productImage1,
         'count': productQuantity
       };

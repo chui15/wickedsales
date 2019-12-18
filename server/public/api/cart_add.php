@@ -7,14 +7,14 @@ if (!defined('INTERNAL')){
 }
 
 $bodyData = getBodyData();
-if(!$bodyData['id']){
+if(!$bodyData['ID']){
   throw new Exception('Must have a product id to add to cart');
 } else {
-  $id = intval($bodyData['id']);
+  $id = intval($bodyData['ID']);
 }
 
 if (!$id > 0){
-  throw new Exception('Product id must be valid: ' . $bodyData['id']);
+  throw new Exception('Product id must be valid: ' . $bodyData['ID']);
 }
 
 if(!empty($_SESSION['cartId'])){
@@ -35,7 +35,7 @@ if(!$priceResult){
 
 $rowCount = mysqli_num_rows($priceResult);
 if (!$rowCount > 0){
-  throw new Exception('invalid product id: ' . $bodyData['id']);
+  throw new Exception('invalid product id: ' . $bodyData['ID']);
 }
 
 $productData = [];

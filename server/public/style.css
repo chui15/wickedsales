@@ -33,6 +33,7 @@ header {
 .home-banner {
   margin-top: 40px;
   margin-bottom: 40px;
+  width: 100%;
 }
 
 .initial-modal-back, .transaction-modal-back {
@@ -51,7 +52,7 @@ header {
 .initial-modal-content {
   background-color: white;
   width: 60%;
-  height: 60vh;
+  height: auto;
   border-radius: 10px;
   box-shadow: 0px 0px 2px gray;
   border: 2px solid rgb(146, 144, 144);
