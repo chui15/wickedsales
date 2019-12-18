@@ -8,10 +8,11 @@ class ProductList extends React.Component {
       products: []
     };
     this.getProducts = this.getProducts.bind(this);
+    this.abortController = new window.AbortController();
   }
 
   getProducts() {
-    fetch('/api/products.php')
+    fetch('/api/products.php', { signal: this.abortController.signal })
       .then(res => res.json())
       .then(data => this.setState({
         products: this.state.products.concat(data)
@@ -21,6 +22,10 @@ class ProductList extends React.Component {
 
   componentDidMount() {
     this.getProducts();
+  }
+
+  componentWillUnmount() {
+    this.abortController.abort();
   }
 
   render() {

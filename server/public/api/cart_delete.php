@@ -25,6 +25,7 @@ if (!$deleteResult) {
   throw new Exception('delete query failed' . mysqli_connect_error());
 }
 
+if ($data === null) $data = [];
 print(json_encode($data));
 
 ?>

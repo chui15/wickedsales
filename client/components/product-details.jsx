@@ -16,6 +16,7 @@ class ProductDetails extends React.Component {
     this.switchCart = this.switchCart.bind(this);
     this.handleQuantityChange = this.handleQuantityChange.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
@@ -57,6 +58,12 @@ class ProductDetails extends React.Component {
     });
   }
 
+  handleCancel() {
+    this.setState({
+      addClicked: false
+    });
+  }
+
   handleKeyPress(event) {
     if (this.state.canEnter === true) {
       if (event.key === 'Enter') {
@@ -80,7 +87,7 @@ class ProductDetails extends React.Component {
   render() {
     let addModal;
     if (this.state.addClicked) {
-      addModal = <AddModal showModal={this.state.addClicked} setView={this.props.setView}/>;
+      addModal = <AddModal showModal={this.state.addClicked} setView={this.props.setView} handleCancel={this.handleCancel}/>;
     } else {
       addModal = null;
     }
@@ -99,7 +106,7 @@ class ProductDetails extends React.Component {
         'Name': productName,
         'Price': productPrice,
         'Short Description': this.state.product['Short Description'],
-        'id': this.state.product.id,
+        'ID': this.state.product.id,
         'Image': productImage1,
         'count': productQuantity
       };
