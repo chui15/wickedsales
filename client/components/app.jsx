@@ -20,7 +20,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      lastProductAdded: null,
       view: {
         name: 'catalog',
         params: {}
@@ -61,8 +60,7 @@ class App extends React.Component {
         let copy = [...this.state.cart];
         copy.push(product);
         this.setState({
-          cart: copy,
-          lastProductAdded: product.ID
+          cart: copy
         });
       })
       .catch(error => console.error(error));
@@ -103,7 +101,6 @@ class App extends React.Component {
   }
 
   render() {
-    const { lastProductAdded } = this.state;
     let navBar;
     let product;
     let homeBanner;
@@ -120,7 +117,7 @@ class App extends React.Component {
     }
     let cartSummary;
     if (this.state.view.name === 'cart') {
-      cartSummary = <CartSummary lastProductAdded={lastProductAdded} cartItems={this.state.cart} setView={this.setView} deleteItem={this.deleteItem}/>;
+      cartSummary = <CartSummary cartItems={this.state.cart} setView={this.setView} deleteItem={this.deleteItem}/>;
     } else {
       cartSummary = null;
     }

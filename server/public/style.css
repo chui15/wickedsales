@@ -36,7 +36,7 @@ header {
   width: 100%;
 }
 
-.initial-modal-back, .transaction-modal-back {
+.initial-modal-back, .transaction-modal-back, .add-modal-back {
   display: block;
   position: fixed;
   z-index: 1;
@@ -155,7 +155,7 @@ header {
 .square {
   float: left;
   position: relative;
-  width: 290px;
+  width: 280px;
   height: 470px;
   margin: 1%;
   overflow: hidden;
@@ -286,9 +286,8 @@ header {
 }
 
 .add-cart {
-  display: block;
-  margin-left: 0px;
-  margin-top: 10px;
+  margin-left: 2%;
+  margin-top: 5px;
   margin-bottom: 15px;
   background-color: #BA7BA1;
   color: white;
@@ -492,7 +491,7 @@ header {
 
 .quantity {
   border: 1px solid #BA7BA1;
-  width: 70px;
+  width: 50px;
   margin-top: 5px;
 }
 
@@ -788,6 +787,10 @@ and (-webkit-min-device-pixel-ratio: 2)  {
 
   .header-definition {
     font-size: 18px;
+  }
+
+  .home-banner {
+    width: auto;
   }
 
   .initial-modal-content {

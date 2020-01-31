@@ -24,14 +24,17 @@ class AddModal extends React.Component {
 
   render() {
     let showModal = this.state.showModal ? 'add-modal-content' : 'hidden';
+    let showModalBack = this.state.showModal ? 'add-modal-back' : 'hidden';
     return (
-      <div className={showModal}>
-        <div className="modal-header start-modal">
-          <span className="modal-title initial-modal-title">Item successfully added to cart!</span>
-        </div>
-        <div>
-          <button type="button" className="btn add-modal-button" onClick={this.switchCart}>View Cart</button>
-          <button type="button" className="btn add-modal-button" onClick={this.close}>Continue Shopping</button>
+      <div className={showModalBack}>
+        <div className={showModal}>
+          <div className="modal-header start-modal">
+            <span className="modal-title initial-modal-title">Item successfully added to cart!</span>
+          </div>
+          <div>
+            <button type="button" className="btn add-modal-button" onClick={this.switchCart}>View Cart</button>
+            <button type="button" className="btn add-modal-button" onClick={this.close}>Continue Shopping</button>
+          </div>
         </div>
       </div>
     );

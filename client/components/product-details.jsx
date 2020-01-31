@@ -128,12 +128,12 @@ class ProductDetails extends React.Component {
           <span className="product-long">*One Size.</span>
           <p className="product-title">Product Description:</p>
           <p className="product-long">{productLong}</p>
-          <span className="product-title ml-1">Input Item Quantity: </span>
+          <span className="product-title ml-1">Item Quantity: </span>
           <div className="form-container row">
             <input type="text" className="form-control quantity align-self-start" placeholder="i.e. 3" value={this.state.quantity} onChange={this.handleQuantityChange} onKeyPress={this.handleKeyPress}></input>
+            <button type="button" onClick={() => { this.handleAdd(); this.props.addToCart(productToAdd); }} className="btn align-self-end add-cart">Add To Cart</button>
           </div>
           <span className="quantity-confirm">{this.state.quantityConfirm}</span>
-          <button type="button" onClick={() => { this.handleAdd(); this.props.addToCart(productToAdd); }} className="btn align-self-start add-cart">Add To Cart</button>
         </div>
       </div>
       {addModal}
