@@ -36,7 +36,7 @@ header {
   width: 100%;
 }
 
-.initial-modal-back, .transaction-modal-back, .add-modal-back {
+.initial-modal-back, .transaction-modal-back, .add-modal-back, .remove-modal-back {
   display: block;
   position: fixed;
   z-index: 1;

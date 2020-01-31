@@ -53,9 +53,12 @@ class ProductDetails extends React.Component {
   }
 
   handleAdd() {
-    this.setState({
-      addClicked: true
-    });
+    if (parseInt(this.state.quantity) !== 0) {
+      this.setState({
+        addClicked: true
+      });
+    }
+    return null;
   }
 
   handleCancel() {

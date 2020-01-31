@@ -55,15 +55,17 @@ class App extends React.Component {
   }
 
   addToCart(product) {
-    fetch('/api/cart.php', { method: 'POST', body: JSON.stringify(product), headers: { 'Content-Type': 'application/json' } })
-      .then(data => {
-        let copy = [...this.state.cart];
-        copy.push(product);
-        this.setState({
-          cart: copy
-        });
-      })
-      .catch(error => console.error(error));
+    if (parseInt(product.count) !== 0) {
+      fetch('/api/cart.php', { method: 'POST', body: JSON.stringify(product), headers: { 'Content-Type': 'application/json' } })
+        .then(data => {
+          let copy = [...this.state.cart];
+          copy.push(product);
+          this.setState({
+            cart: copy
+          });
+        })
+        .catch(error => console.error(error));
+    }
   }
 
   deleteItem(itemID) {
