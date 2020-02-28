@@ -1,12 +1,12 @@
-# 許願 (Xu Yuan) Shop
+# 👗🛒 許願 (Xu Yuan) Shop
 
 A full-stack LAMP & React.js eCommerce/shopping cart app made for desktop browsers.
 
-## Disclaimer
+## 📳 Disclaimer
 
 This app is only a DEMO, there are no actual transactions being made and no personal information is used and/or being compromised.
 
-## Technologies Used
+## ✨ Technologies Used
 
 - React.js
 - Webpack 4
@@ -17,17 +17,17 @@ This app is only a DEMO, there are no actual transactions being made and no pers
 - CSS3
 - AWS EC2
 
-## Preview
+## 🔍 Preview
 
 ![Xuyuan Shop](server/public/images/xuyuan.png)
 ![Xuyuan Shop](server/public/images/xuyuanpreview.png)
 
-## Live Demo
+## 🕹 Live Demo
 
 Try the application live at [https://xuyuan.christiehui.com]
 *Note: application is best viewed on desktop browsers (at the moment).
 
-## Features
+## 💭 Features
 
 - User can view a catalog of products, as well as products sorted by category.
 - User can view the details of an individual product.
