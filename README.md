@@ -17,7 +17,7 @@ This app is only a DEMO, there are no actual transactions being made and no pers
 - CSS3
 - AWS EC2
 
-## 🔍 Preview
+## 🔎 Preview
 
 ![Xuyuan Shop](server/public/images/xuyuan.png)
 ![Xuyuan Shop](server/public/images/xuyuanpreview.png)
