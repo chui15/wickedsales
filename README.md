@@ -1,4 +1,4 @@
-# 👗🛒 許願 (Xu Yuan) Shop
+# 🎀🛍 許願 (Xu Yuan) Shop
 
 A full-stack LAMP & React.js eCommerce/shopping cart app made for desktop browsers.
 
